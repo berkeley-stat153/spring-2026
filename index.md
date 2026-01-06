@@ -1,5 +1,5 @@
 ---
-title: "Dept 999: Generic Description"
+title: "Stat 153: Introduction to Time Series"
 subtitle: "UC Berkeley, Spring 2026"
 ---
 

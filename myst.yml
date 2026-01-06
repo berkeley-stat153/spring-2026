@@ -1,14 +1,14 @@
 # See docs at: https://mystmd.org/guide/frontmatter
 version: 1
 project:
-  title: "Dept 999"
-  description: "Test Class Website Based On Myst"
+  title: "Stat 153"
+  description: "Introduction to Time Series"
   keywords: []
   #authors: ["Instructor Name"]
   license:
     # code: MIT
     content: CC-BY-4.0
-  github: https://github.com/berkeley-cdss/course-site-myst
+  github: https://github.com/berkeley-stat153/spring-2026
   # bibliography: []
   #jupyter:
   #  lite: true
@@ -31,9 +31,11 @@ project:
   - file: data.md
   - file: unit1.md
   - file: unit2.ipynb
+  authors:
+  - Instructor Name
 site:
   template: book-theme
-  title: "Dept 999"
+  title: "Stat 153"
   options:
     logo: "stat_bear.png"
     style: custom.css
@@ -46,4 +48,4 @@ site:
   #- title: Gradescope
   #  url: https://www.gradescope.com/courses/564792
   domains:
-  - berkeley-cdss.github.io
+  - stat153.berkeley.edu
