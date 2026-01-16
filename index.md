@@ -66,7 +66,7 @@ An introduction to time series analysis in the time domain and spectral domain. 
 
 # Syllabus
 
-Basic information about the course can be found in the [syllabus](syllabus.pdf).
+Basic information about the course can be found in the [syllabus](syllabus.md) ([pdf](syllabus.pdf)).
 
 ## Schedule
 
