@@ -30,7 +30,7 @@ exports:
 * **bCourses** [bCourses](https://bcourses.berkeley.edu/courses/1551495) will be used to keep track of grades.
 
 (about-stat-153)=
-## Course Information 
+# Course Information 
 
 A time series is a sequence of data points collected over time, for example, hourly temperature readings, stock market fluctuations, or brain responses over time for a particular stimulus. Such methods are important for uncovering regular patterns over time, including cycles and trends. In this class we will learn techniques for interpreting and modeling such data. Content will include (a) Multiple linear regression models, (b) Nonlinear regression models, (c) Regularized High-dimensional linear regression models, (d) Variance models and spectral analysis, (e) Lagged regressions and ARIMA models, (f) Recurrent Neural Networks, (g) self-supervised models. This class will use the Python programming language. Multiple applications will be explored, including but not limited to speech processing, neuroscience, astronomy, and epidemiology.
 
@@ -85,9 +85,9 @@ As a member of the campus community, you are expected to demonstrate integrity i
 
 ## Take care of yourself
 
-It is important to take care of your mental and physical health. If you need help or support, there are many resources on campus that can help. Please find them at the [Academic Accommodations Hub](https://evcp.berkeley.edu/programs-resources/academic-accommodations-hub).
+It is important to take care of your mental and physical health. If you need help or support, there are many resources on campus that can help. Please find them at the [Academic Accommodations Hub](https://evcp.berkeley.edu/programs-resources/academic-accommodations-hub). If you are sick, please do not come to class - this will help you recover and keep your classmates / course staff from getting sick. You can get the notes from a friend, or access materials online on the course website. 
 
-## Tentative Schedule
+# Tentative Schedule
 
 Topics will be available on the [course website](https://stat153.berkeley.edu/spring-2026) as they occur. Below is a plan for the semester (subject to change as we move through):
 
