@@ -4,14 +4,14 @@ project:
   title: "Stat 153"
   description: "Introduction to Time Series"
   keywords: []
-  #authors: ["Instructor Name"]
+  #authors: ['Liberty Hamilton']
   license:
     # code: MIT
     content: CC-BY-4.0
   github: https://github.com/berkeley-stat153/spring-2026
   # bibliography: []
-  #jupyter:
-  #  lite: true
+  jupyter:
+    lite: true
   #thebe:
   #  lite: true
     #local:
@@ -21,31 +21,31 @@ project:
     #  url: http://localhost:8888
     #  token: test-secret
   plugins:
-  - schedule.mjs
-  - staff.mjs
+    - schedule.mjs
   toc:
-  - file: index.md
-  - file: syllabus.md
-  - file: calendar.md
-  - file: staff.md
-  - file: data.md
-  - file: unit1.md
-  - file: unit2.ipynb
-  authors:
-  - Instructor Name
+    - file: index.md
+    - file: syllabus.md
+    # - title: Week 1
+    #   children:
+    #   - file: public/lectures/01_intro.md
+    #   - file: public/lectures/02_characteristics_of_time_series.md
+    #   - file: public/labs/lab01.ipynb
+      # - file: public/lectures/01_intro.ipynb
+    # - title: Week 2
+    #   children:
+    #   - file: public/lectures/01_intro.md
+    #   - file: public/lectures/01_intro.ipynb
+ 
 site:
   template: book-theme
-  title: "Stat 153"
+  title: 'Stat 153 / 248'
   options:
-    logo: "stat_bear.png"
-    style: custom.css
+    logo: 'stat_bear.png'
   nav: []
   actions:
-  - title: Ed
-    url: https://edstem.org
-  - title: DataHub
-    url: https://datahub.berkeley.edu
-  #- title: Gradescope
-  #  url: https://www.gradescope.com/courses/564792
+    - title: Ed
+      url: https://edstem.org/us/courses/93784
+    - title: Gradescope
+      url: https://www.gradescope.com/courses/564792
   domains:
-  - stat153.berkeley.edu
+    - stat153.berkeley.edu
