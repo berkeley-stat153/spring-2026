@@ -2,10 +2,10 @@
   days:
     - date: 'Jan 20'
       items:
-        # - type: 'Lecture'
-        #   id: '1'
-        #   name: Introduction to the class
-        #   href: './public/lectures/01_intro.md'
+        - type: 'Lecture'
+          id: '1'
+          name: Introduction to the class
+          href: './public/lectures/01_intro.md'
           # auxil:
           #   id: 'Note 1'
           #   href: './unit1.html'
@@ -13,18 +13,18 @@
           id: '1'
           name: Pre-semester survey (sign in with berkeley.edu email)
           href: 'https://forms.gle/NiAj7pTgH2kQBg5V9'
-#     - date: 'Jan 22'
-#       items:
-#         - type: 'Lecture'
-#           id: '1'
-#           name: Characteristics of time series data
-#           href: './public/lectures/02_characteristics_of_time_series.md'
-#     - date: 'Jan 23'
-#       items:
-#         - type: 'Lab'
-#           id: '1'
-#           name: Lab 1
-#           href: './public/labs/lab1_characteristics.ipynb'
+    - date: 'Jan 22'
+      items:
+        - type: 'Lecture'
+          id: '2'
+          name: Characteristics of time series data
+          href: './public/lectures/02_characteristics_of_time_series.md'
+    - date: 'Jan 23'
+      items:
+        - type: 'Lab'
+          id: '1'
+          name: Lab 1
+          #href: './public/labs/lab01.ipynb'
 # - week: 2
 #   days:
 #     - date: 'Jan 27'
