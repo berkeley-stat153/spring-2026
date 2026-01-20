@@ -50,7 +50,7 @@ challenging without prior completion of STAT 135. Labs, homework, and projects w
 (exams)=
 ## Exams
 
-For STAT 153, there will be two exams: Midterm and Final. The Midterm will be on March 19 in class. The Final exam will be on TBD. 
+For STAT 153, there will be two exams: Midterm and Final. The Midterm will be on March 19 in class. The Final exam will be on May 14 from 7-10pm. 
 
 For STAT 248, there will be one exam: Midterm (in class on March 19). Instead of the final exam, there will be a final project (details will be announced later).
 
