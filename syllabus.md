@@ -127,6 +127,6 @@ Topics will be available on the [course website](https://stat153.berkeley.edu/sp
 | Apr. 30  | Recurrent Neural Networks (cont'd)                   |                 |
 | May 5    | Self-supervised learning                             |                 |
 | May 7    | Self-supervised learning (cont'd), wrap up           | HW5 due         |
-| Date TBD | FINAL EXAM                                           |                 |
+| May 14 7-10pm | FINAL EXAM  (location TBD)                                         |                 |
 
  
