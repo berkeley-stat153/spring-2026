@@ -63,6 +63,8 @@ Grades will be based on five homework assignments, one midterm exam, and one fin
 * Midterm: 20%
 * Final Exam (Stat153) or Final Project (Stat248): 30%
 
+Alternatively, the grade may be calculated as 50% homework + 50% final exam/project, whatever is the maximum.
+
 ## Differences between Stat153 and Stat248
 
 This class is crosslisted as both an undergraduate (Stat158) and a graduate (Stat248) class. Each homework assignment will have 1-3 additional questions that only students taking STAT248 need to answer. STAT 153 has a final exam while STAT 248 will have a final project.
