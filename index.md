@@ -51,7 +51,7 @@ An introduction to time series analysis in the time domain and spectral domain. 
 [yichenpan@berkeley.edu](mailto:yichenpan@berkeley.edu)
 
 **Office Hours**:
- - TBD
+ - Monday 12-4pm, Evans 428
 
 :::
 
