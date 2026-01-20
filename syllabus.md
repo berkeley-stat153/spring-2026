@@ -17,7 +17,7 @@ exports:
   * Nicholas Liskij - [nliskij@berkeley.edu](mailto:nliskij@berkeley.edu)
     * **Office Hours**: TBD
   * Yichen Pan - [yichenpan@berkeley.edu](mailto:yichenpan@berkeley.edu)
-    * **Office Hours**: TBD
+    * **Office Hours**: Monday 12-4pm Evans 428
 
 * **Readers:** Brandon Xu and Jack Zhang
 
