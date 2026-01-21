@@ -6,11 +6,6 @@ subtitle: "UC Berkeley, Spring 2026"
 # Course Description 
 An introduction to time series analysis in the time domain and spectral domain. Topics will include: estimation of trends and seasonal effects, autoregressive moving average models, forecasting, indicators, harmonic analysis, spectra. This course uses Python as its primary computing language.
 
-<!-- :::{attention} There is a quiz in [Week 2](#week2)!
-:class: dropdown
-:icon: true
-👋
-::: -->
 
 # Instructor and GSIs
 

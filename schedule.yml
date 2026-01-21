@@ -24,7 +24,7 @@
         - type: 'Lab'
           id: '1'
           name: Lab 1
-          #href: './public/labs/lab01.ipynb'
+          href: ''
 # - week: 2
 #   days:
 #     - date: 'Jan 27'
