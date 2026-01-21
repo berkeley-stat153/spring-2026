@@ -45,7 +45,7 @@ challenging without prior completion of STAT 135. Labs, homework, and projects w
 
 **Required Texts:** There are no required textbooks for this course. Instead, I will provide lecture notes as well as book chapters as PDFs, some of which come from the following recommended texts:
 
-* Recommended Texts: [Shumway & Stoffer Time Series Analysis and Its Applications](https://link.springer.com/book/10.1007/978-3-031-70584-7). 4th or 5th edition. 5th edition is available online for free through Springer Books.
+* Recommended Texts: [Shumway & Stoffer Time Series Analysis and Its Applications](https://link-springer-com.libproxy.berkeley.edu/book/10.1007/978-3-031-70584-7). 4th or 5th edition. 5th edition is available online for free through Springer Books (link now uses Berkeley library proxy).
 
 (exams)=
 ## Exams
