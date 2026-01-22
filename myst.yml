@@ -29,7 +29,7 @@ project:
       children:
       - file: public/lectures/01_intro.md
       - file: public/lectures/02_characteristics_of_time_series.md
-    #  - file: public/labs/Lab1.ipynb
+      - file: public/lectures/02_characteristics_notes.md
     # - title: Week 2
     #   children:
     #   - file: public/lectures/01_intro.md
