@@ -28,8 +28,12 @@ project:
     - title: Week 1
       children:
       - file: public/lectures/01_intro.md
+      - file: public/lectures/01_intro.pdf
+        hidden: true
       - file: public/lectures/02_characteristics_of_time_series.md
       - file: public/lectures/02_characteristics_notes.md
+      - file: public/lectures/Lec02_notes.pdf
+        hidden: true
     # - title: Week 2
     #   children:
     #   - file: public/lectures/01_intro.md
