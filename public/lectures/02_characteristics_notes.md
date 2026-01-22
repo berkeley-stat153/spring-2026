@@ -6,7 +6,9 @@ author:
 exports:
   - format: pdf
     template: /Users/liberty/Documents/Berkeley/Teaching/plain_latex
-    output: exports/Lec02_Notes.pdf
+    output: ./Lec02_Notes.pdf
+  - format: tex
+    output: ./Lec02_Notes.tex
 ---
 
 * **Reading**: Chapter 1.2 – Shumway and Stoffer
