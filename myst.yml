@@ -50,4 +50,3 @@ site:
       url: https://datahub.berkeley.edu 
   domains:
     - stat153.berkeley.edu
-  baseurl: /spring-2026
