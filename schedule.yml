@@ -29,14 +29,14 @@
           id: '1'
           name: Lab 1
           href: 'https://datahub.berkeley.edu/hub/user-redirect/git-pull?repo=https%3A%2F%2Fgithub.com%2Fberkeley-stat153%2Fspring-2026&branch=main&urlpath=lab%2Ftree%2Fspring-2026%2Fpublic%2Flabs%2FLab1.ipynb'
- - week: 2
-   days:
-     - date: 'Jan 27'
-       items:
-         - type: 'Lecture'
-           id: '3'
-           name: Measures of dependence
-           href: './public/lectures/03_dependence.md'
+- week: 2
+  days:
+    - date: 'Jan 27'
+      items:
+        - type: 'Lecture'
+          id: '3'
+          name: Measures of dependence
+          href: './public/lectures/03_dependence.md'
 #         - type: 'Participation'
 #           id: '2'
 #           name: Lecture Participation 2
