@@ -15,7 +15,7 @@ exports:
 
 * **GSIs:** 
   * Nicholas Liskij - [nliskij@berkeley.edu](mailto:nliskij@berkeley.edu)
-    * **Office Hours**: TBD
+    * **Office Hours**: Thursdays 10:30am-2:30pm Evans 428
   * Yichen Pan - [yichenpan@berkeley.edu](mailto:yichenpan@berkeley.edu)
     * **Office Hours**: Monday 12-4pm Evans 428
 
