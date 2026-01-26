@@ -49,14 +49,17 @@ jobs:
           find ./_build/html -type f \( -name "*.html" -o -name "*.xml" -o -name "*.json" -o -name "*.js" \) -print0 \
             | xargs -0 sed -i \
               -e 's/spring-2026\/spring-2026/spring-2026/g'
-      - name: Fix PDF URLs in JSON (strip base path)
+      - name: Fix PDF URLs in JSON + HTML (exclude root index.html)
         run: |
-          # Rewrite only PDF URLs like /spring-2026/build/*.pdf -> /build/*.pdf in JSON files
-          find ./_build/html -type f -name "*.json" -print0 \
+          find ./_build/html -type f \( \
+              -name "*.json" \
+              -o \( -name "*.html" -a ! -path "./_build/html/index.html" \) \
+            \) -print0 \
             | xargs -0 sed -i -E 's|/spring-2026(/build/[^"[:space:]]+\.pdf)|\1|g'
 
-          # Verify: should print nothing
-          grep -R --line-number "/spring-2026/build/[^\"[:space:]]*\.pdf" ./_build/html || echo "✅ no PDF URLs with duplicated base path remain"
+          # Verify (no spaces in the matched URL)
+          grep -R --line-number "/spring-2026/build/[^\"[:space:]]*\.pdf" ./_build/html \
+            || echo "✅ no PDF URLs with duplicated base path remain"
       - name: Verify rewrite worked
         run: |
           echo "After sed:"
