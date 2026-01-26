@@ -39,15 +39,16 @@ jobs:
         run: myst build --html
       - name: Inject Siteimprove analytics
         run: node inject-siteimprove.js
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: './_build/html'
       - name: Find duplicated base paths in build output
         run: |
           echo "Searching for duplicated paths..."
           grep -R --line-number "spring-2026/spring-2026" ./_build/html || true
           grep -R --line-number "/spring-2026/spring-2026" ./_build/html || true
+      - name: Fix duplicated base path in built assets
+        run: |
+          find ./_build/html -type f \( -name "*.html" -o -name "*.xml" -o -name "*.json" -o -name "*.js" \) -print0 \
+            | xargs -0 sed -i \
+              -e 's/spring-2026\/spring-2026/spring-2026/g'
       - name: Fix PDF URLs in JSON (strip base path)
         run: |
           # Rewrite only PDF URLs like /spring-2026/build/*.pdf -> /build/*.pdf in JSON files
@@ -56,6 +57,14 @@ jobs:
 
           # Verify: should print nothing
           grep -R --line-number "/spring-2026/build/.*\.pdf" ./_build/html || echo "✅ no PDF URLs with duplicated base path remain"
+      - name: Verify rewrite worked
+        run: |
+          echo "After sed:"
+          grep -R --line-number "spring-2026/spring-2026" ./_build/html || echo "no duplicates found"
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './_build/html'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
