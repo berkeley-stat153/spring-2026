@@ -48,15 +48,14 @@ jobs:
           echo "Searching for duplicated paths..."
           grep -R --line-number "spring-2026/spring-2026" ./_build/html || true
           grep -R --line-number "/spring-2026/spring-2026" ./_build/html || true
-      - name: Fix duplicated base path in built assets
+      - name: Fix PDF URLs in JSON (strip base path)
         run: |
-          find ./_build/html -type f \( -name "*.html" -o -name "*.xml" -o -name "*.json" -o -name "*.js" \) -print0 \
-            | xargs -0 sed -i \
-              -e 's/spring-2026\/spring-2026/spring-2026/g'
-      - name: Verify rewrite worked
-        run: |
-          echo "After sed:"
-          grep -R --line-number "spring-2026/spring-2026" ./_build/html || echo "no duplicates found"
+          # Rewrite only PDF URLs like /spring-2026/build/*.pdf -> /build/*.pdf in JSON files
+          find ./_build/html -type f -name "*.json" -print0 \
+            | xargs -0 sed -i -E 's|/spring-2026(/build/[^"[:space:]]+\.pdf)|\1|g'
+
+          # Verify: should print nothing
+          grep -R --line-number "/spring-2026/build/.*\.pdf" ./_build/html || echo "✅ no PDF URLs with duplicated base path remain"
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
