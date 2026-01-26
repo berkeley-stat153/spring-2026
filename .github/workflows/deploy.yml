@@ -52,7 +52,7 @@ jobs:
       - name: Fix PDF URLs in JSON (strip base path)
         run: |
           # Rewrite only PDF URLs like /spring-2026/build/*.pdf -> /build/*.pdf in JSON files
-          find ./_build/html -type f -name "*.json" -print0 \
+          find ./_build/html -type f -name "*.json" -o -name "*.html" -print0 \
             | xargs -0 sed -i -E 's|/spring-2026(/build/[^"[:space:]]+\.pdf)|\1|g'
 
           # Verify: should print nothing
