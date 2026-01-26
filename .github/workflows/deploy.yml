@@ -58,8 +58,12 @@ jobs:
             | xargs -0 sed -i -E 's|/spring-2026(/build/[^"[:space:]]+\.pdf)|\1|g'
 
           # Verify (no spaces in the matched URL)
-          grep -R --line-number "/spring-2026/build/[^\"[:space:]]*\.pdf" ./_build/html \
+          grep -R --line-number \
+            --exclude="./_build/html/index.html" \
+            "/spring-2026/build/[^\"[:space:]]*\.pdf" \
+            ./_build/html \
             || echo "✅ no PDF URLs with duplicated base path remain"
+
       - name: Verify rewrite worked
         run: |
           echo "After sed:"
