@@ -43,6 +43,10 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: './_build/html'
+      - name: Fix duplicated base path
+        run: |
+          find ./_build/html -type f -name "*.html" -print0 \
+             | xargs -0 sed -i 's|spring-2026/spring-2026|spring-2026|g'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
