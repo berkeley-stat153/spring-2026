@@ -1,0 +1,233 @@
+% Created with jtex v.1.0.20
+\documentclass{article}
+\usepackage{hyperref}
+\usepackage{datetime}
+\usepackage{graphicx}
+\usepackage{natbib}
+\bibliographystyle{abbrvnat}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%  imports  %%%%%%%%%%%%%%%%%%%
+\usepackage{amsmath}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% colors for hyperlinks
+\hypersetup{colorlinks=true, allcolors=blue}
+
+\newcommand{\logo}{
+  \href{https://curvenote.com}{\includegraphics[width=2cm]{curvenote.png}}
+}
+
+\title{Lecture 3 Notes - Characteristics of Time Series}
+
+\author{Liberty Hamilton}
+
+\newdate{articleDate}{27}{1}{2026}
+\date{\displaydate{articleDate}}
+
+\begin{document}
+\maketitle
+\begin{center}\logo\end{center}
+
+
+\begin{itemize}
+\item \textbf{Reading}: Chapter 1.3-1.7 -- Shumway and Stoffer
+\end{itemize}
+
+\section{Review / basic concepts}
+
+\begin{itemize}
+\item Stochastic process
+\item White noise
+\item Moving average
+\item Autoregression
+\item Random walk (w/ and w/o drift)
+\item Signals in noise
+\end{itemize}
+
+\section{This week - Measures of dependence}
+
+\begin{itemize}
+\item Mean function
+\item Autocovariance
+\item Autocorrelation
+\item Cross-covariance
+\item Cross-correlation
+\item Stationarity
+\item Multidimensional time series
+\item Random number generation
+\end{itemize}
+
+\section{Mean and variance}
+
+Last week and in your lab, we saw the concept of how mean and variance differ for a white noise process, a random walk, and a random walk with drift. The \textit{mean} and \textit{variance functions} of a time series are useful descriptors because they helps us determine something about the drift and the spread of the data that we should expect over time.
+
+The \textit{mean function} is defined as $\mu_{xt} = \mathbb{E}(x_t)$
+
+The \textit{variance function} is $\sigma^2_t = \operatorname{Var}(x_t) = \mathbb{E}[(x_t -\mu_t)^2]$.
+
+Let's revisit some examples from before:
+
+\subsection{White noise}
+
+For a white noise time series, $\mu_{wt} = \mathbb{E}(w_t)=0$ for all $t$. $\operatorname{Var}(w_t) = 1$ (for a Gaussian white noise series).
+
+\subsection{Moving average}
+
+What if we apply a 3-point moving average? Although this induces some correlation structure, it actually does not change the mean function at all:
+
+$\mu_{vt} = \mathbb{E}(v_t) = \frac{1}{3}[\mathbb{E}(w_{t -1})+\mathbb{E}(w_{t})+\mathbb{E}(w_{t+1})] = 0$
+
+\subsection{Random walk with drift}
+
+For the random walk with drift, the mean function is just the line $\mu_{xt} = \delta t + \displaystyle\sum_{j=1}^t E(w_j) = \delta t$.
+
+\subsection{Signal plus noise}
+
+And for a signal plus noise (as an example, we'll use this sinusoid):
+
+\begin{equation}
+\begin{aligned}
+\mu_{xt} = \mathbb{E}(x_t) &= \mathbb{E} [A \cos(2\pi \omega t + \phi) + w_t] \\ 
+&= \mathbb{E} [A \cos(2\pi \omega t + \phi)] + \mathbb{E}[w_t] \\
+&= \mathbb{E} [A \cos(2\pi \omega t + \phi)]
+\end{aligned}
+\end{equation}
+
+\subsection{Autocovariance}
+
+What if we instead want to know something about the dependence between two points $s$ and $t$ within the same time series. We'll call this \textit{autocovariance}, $\gamma$.
+
+$\gamma_x(s,t) = \operatorname{cov}(x_s,x_t) = \mathbb{E}[(x_s -\mu_s)(x_t -\mu_t)]$
+
+When $s=t$, we have:
+
+$\gamma_x(t,t) = \mathbb{E}[(x_t -\mu_t)^2] = \operatorname{Var}(x_t)$
+
+For white noise, there should be no dependence between differing time points. By definition, $\mathbb{E}(w_t)=0$ and:
+
+\begin{equation}
+\gamma_w(s,t) = \operatorname{cov}(w_s,w_t) = 
+\begin{cases}
+\sigma^2_w, & \text{if } s=t, \\
+0, & s \neq t
+\end{cases}
+\end{equation}
+
+\subsection{Covariance of linear combinations}
+
+If we have random variables $U=\displaystyle\sum_{j=1}^m a_j X_j$ and $V=\displaystyle\sum_{k=1}^r b_k Y_k$ that are linear combinations of (finite variance) random variables ${X_j}$ and ${Y_k}$, then the covariance of these is:
+
+$\operatorname{cov}(U,V) = \displaystyle\sum_{j=1}^m \displaystyle\sum_{k=1}^r a_j b_k \operatorname{cov}(X_j, Y_k)$
+
+Also, $\operatorname{var}(U) = \operatorname{cov}(U,U)$.
+
+So how can we use this? Now we can try this for the moving average example.
+
+\begin{equation}
+\begin{aligned}
+\gamma_v(s,t) = \operatorname{cov}(v_s, v_t) &= \operatorname{cov}(\tfrac{1}{3}(w_{s-1}+w_s+w_{s+1}), \tfrac{1}{3}(w_{t-1}+w_t+w_{t+1})) \\
+&= \tfrac{1}{9} \operatorname{cov}(w_{s-1}+w_s+w_{s+1}, w_{t-1}+w_t+w_{t+1})
+\end{aligned}
+\end{equation}
+
+When $s=t$, we have:
+\begin{equation}
+\begin{aligned}
+\gamma_v(t,t) &= \operatorname{cov}(v_t, v_t) \\
+&= \operatorname{cov}(\tfrac{1}{3}(w_{t-1}+w_t+w_{t+1}), \tfrac{1}{3}(w_{t-1}+w_t+w_{t+1})) \\
+&= \tfrac{1}{9} (\operatorname{cov}(w_{t-1},w_{t-1}) + \operatorname{cov}(w_{t},w_{t}) + \operatorname{cov}(w_{t+1},w_{t+1}) \\
+&\quad + 2\operatorname{cov}(w_{t-1}, w_t)) + 2\operatorname{cov}(w_{t}, w_{t+1})) + 2\operatorname{cov}(w_{t-1}, w_{t+1}))\\
+&= \tfrac{1}{9} (\sigma_w^2 + \sigma_w^2 + \sigma_w^2 + 0 +0 +0)\\
+&= \tfrac{3}{9} \sigma_w^2 \\
+&= \tfrac{1}{3} \sigma_w^2
+\end{aligned}
+\end{equation}
+
+When $s=t+1$, we have:
+\begin{equation}
+\begin{aligned}
+\gamma_v(t+1,t) &= \operatorname{cov}(\tfrac{1}{3}(w_{t}+w_{t+1}+w_{t+2}), \tfrac{1}{3}(w_{t-1}+w_t+w_{t+1})) \\
+&= \tfrac{1}{9}(\operatorname{cov}(w_t,w_t)+\operatorname{cov}(w_{t+1},w_{t+1}))\\
+&= \tfrac{2}{9}\sigma^2_w
+\end{aligned}
+\end{equation}
+
+If we then follow this for more lags, we get:
+
+\begin{equation}
+\gamma_v(s,t) = 
+\begin{cases}
+\tfrac{3}{9}\sigma^2_w, & \text{if } s=t, \\
+\tfrac{2}{9}\sigma^2_w, & \text{if } |s-t|=1, \\
+\tfrac{1}{9}\sigma^2_w, & \text{if } |s-t|=2, \\
+0, & \text{if } |s-t|>2
+\end{cases}
+\end{equation}
+
+Why is this interesting? The autocovariance depends only on the \textit{lag} between $s$ and $t$ and not on the absolute location of these time points. We'll come back to this when we talk about \textit{stationarity}.
+
+\subsection{Autocovariance of a random walk}
+
+Recall that a random walk (with or without drift) is:
+
+$x_t = \delta t + \displaystyle\sum_{i=1}^t w_i$
+
+So,
+\begin{equation}
+\begin{aligned}
+\gamma(s,t) &= \operatorname{cov}(x_s, x_t) \\
+&= \operatorname{cov}(\delta s + \displaystyle\sum_{i=1}^s w_i, \delta t + \displaystyle\sum_{i=1}^t w_i)\\
+&= \sigma^2 \min(s,t)
+\end{aligned}
+\end{equation}
+
+In this case, the autocovariance \textit{does} depend on the particular $s$ and $t$ chosen.
+
+What if we want a bounded measure?
+
+\subsection{Autocorrelation function}
+
+We can calculate the autocorrelation function (ACF) as:
+
+$\rho(s,t) = \frac{\gamma(s,t)}{\sqrt{\gamma(s,s)\gamma(t,t)}}$
+
+This measures the linear predictability of the time series at time $t$ ($x_t$) using $x_s$. We can also extend this to looking at the linear predictability of one time series to another, by extending into the concepts of \textit{cross-covariance} and \textit{cross-correlation}.
+
+\subsection{Cross-covariance}
+
+Between two time series $x_t$ and $y_t$:
+
+$\gamma_xy(s,t) = \operatorname{cov}(x_s,y_t) = \mathbb{E}[(x_s -\mu_{xs})(y_t -\mu_{yt})]$
+
+This tells us how the values in $y$ relate to the values in $x$ over time.
+
+Let's think about a simple example:
+
+$y_t = x_{t -2}$
+
+What is $\gamma_{xy}(k)$ (for lag $k$)? At what lag is $\gamma_{xy}$ maximized?
+
+We can also have the normalized version:
+
+\subsection{Cross-correlation}
+
+$\rho_{xy}(s,t) = \frac{\gamma_xy(s,t)}{\sqrt{\gamma_x(s,s)\gamma_y(t,t)}}$
+
+This is bounded such that $-1 \leq \rho(s,t) \leq 1$
+
+\textit{Poll example}
+
+\section{Next time:}
+
+\begin{itemize}
+\item Stationarity
+\item Calculating sample correlation/covariance
+\item Multi-D time series
+\item RNGs
+\item Measures of dependence! Read SS Chapter 1, sections 1.3-1.7.
+\end{itemize}
+
+
+\end{document}
