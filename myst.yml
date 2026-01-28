@@ -37,7 +37,7 @@ project:
     - title: Week 2
       children:
         - file: public/lectures/03_dependence.md
-    #   children:
+        - file: public/lectures/03_dependence_notes.md
     #   - file: public/lectures/01_intro.md
     #   - file: public/lectures/01_intro.ipynb
 
