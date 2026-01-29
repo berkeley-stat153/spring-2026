@@ -39,8 +39,9 @@ project:
       children:
         - file: public/lectures/03_dependence.md
         - file: public/lectures/03_dependence_notes.md
-    #   - file: public/lectures/01_intro.md
-    #   - file: public/lectures/01_intro.ipynb
+        - file: public/lectures/04_dependence.md
+#        - file: public/lectures/03_dependence_notes.md
+
 
 
 site:
