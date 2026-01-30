@@ -39,27 +39,27 @@ jobs:
         run: myst build --html
       - name: Inject Siteimprove analytics
         run: node inject-siteimprove.js
-      - name: Find duplicated base paths in build output
-        run: |
-          echo "Searching for duplicated paths..."
-          grep -R --line-number "spring-2026/spring-2026" ./_build/html || true
-          grep -R --line-number "/spring-2026/spring-2026" ./_build/html || true
-      - name: Fix duplicated base path in built assets
-        run: |
-          find ./_build/html -type f \( -name "*.html" -o -name "*.xml" -o -name "*.json" -o -name "*.js" \) -print0 \
-            | xargs -0 sed -i \
-              -e 's/spring-2026\/spring-2026/spring-2026/g'
-      - name: Fix PDF URLs in JSON + HTML (exclude root index.html)
-        run: |
-          find ./_build/html -type f \( \
-              -name "*.json" \
-              -o \( -name "*.html" -a ! -path "./_build/html/index.html" \) \
-            \) -print0 \
-            | xargs -0 sed -i -E 's|/spring-2026(/build/[^"[:space:]]+\.pdf)|\1|g'
-      - name: Verify rewrite worked
-        run: |
-          echo "After sed:"
-          grep -R --line-number "spring-2026/spring-2026" ./_build/html || echo "no duplicates found"
+      # - name: Find duplicated base paths in build output
+      #   run: |
+      #     echo "Searching for duplicated paths..."
+      #     grep -R --line-number "spring-2026/spring-2026" ./_build/html || true
+      #     grep -R --line-number "/spring-2026/spring-2026" ./_build/html || true
+      # - name: Fix duplicated base path in built assets
+      #   run: |
+      #     find ./_build/html -type f \( -name "*.html" -o -name "*.xml" -o -name "*.json" -o -name "*.js" \) -print0 \
+      #       | xargs -0 sed -i \
+      #         -e 's/spring-2026\/spring-2026/spring-2026/g'
+      # - name: Fix PDF URLs in JSON + HTML (exclude root index.html)
+      #   run: |
+      #     find ./_build/html -type f \( \
+      #         -name "*.json" \
+      #         -o \( -name "*.html" -a ! -path "./_build/html/index.html" \) \
+      #       \) -print0 \
+      #       | xargs -0 sed -i -E 's|/spring-2026(/build/[^"[:space:]]+\.pdf)|\1|g'
+      # - name: Verify rewrite worked
+      #   run: |
+      #     echo "After sed:"
+      #     grep -R --line-number "spring-2026/spring-2026" ./_build/html || echo "no duplicates found"
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
