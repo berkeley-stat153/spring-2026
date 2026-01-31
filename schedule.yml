@@ -61,7 +61,16 @@
           id: '2'
           name: Lab 2
           href: 'https://datahub.berkeley.edu/hub/user-redirect/git-pull?repo=https%3A%2F%2Fgithub.com%2Fberkeley-stat153%2Fspring-2026&branch=main&urlpath=lab%2Ftree%2Fspring-2026%2Fpublic%2Flabs%2FLab2.ipynb'
-
+    - date: 'Feb 3'
+      items:
+        - type: 'Lecture'
+          id: '5'
+          name: Simple linear regression (part 1)
+          href: './public/lectures/05_linear_regression.md'
+        # - type: 'Lecture'
+        #   id: 'Notes 5'
+        #   name: Lecture 5 notes
+        #   href: './public/lectures/05_linear_regression_notes.md'
 #         - type: 'Participation'
 #           id: '2'
 #           name: Lecture Participation 2
