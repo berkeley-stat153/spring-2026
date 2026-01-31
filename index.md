@@ -34,7 +34,7 @@ An introduction to time series analysis in the time domain and spectral domain. 
 [nliskij@berkeley.edu](mailto:nliskij@berkeley.edu)
 
 **Office Hours**:
- - TBD
+ - Thursday 10:30-2:30pm, Evans 428
 
 :::
 
