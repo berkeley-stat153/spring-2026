@@ -67,10 +67,10 @@
           id: '5'
           name: Simple linear regression (part 1)
           href: './public/lectures/05_linear_regression.md'
-        # - type: 'Lecture'
-        #   id: 'Notes 5'
-        #   name: Lecture 5 notes
-        #   href: './public/lectures/05_linear_regression_notes.md'
+        - type: 'Lecture'
+          id: 'Notes 5'
+          name: Lecture 5 notes
+          href: './public/lectures/05_linear_regression_notes.md'
 #         - type: 'Participation'
 #           id: '2'
 #           name: Lecture Participation 2
