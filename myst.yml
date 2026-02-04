@@ -50,6 +50,7 @@ project:
         - file: public/lectures/05_linear_regression.md
         - file: public/lectures/05_linear_regression_notes.md
         - file: public/lectures/Lecture5.ipynb
+          title: 'Lecture 5 jupyter notebook'
         - file: public/lectures/06_linear_regression.md
 
 
