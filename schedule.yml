@@ -65,6 +65,8 @@
           id: 'Solutions 2'
           name: 'Lab 2 Solutions'
           href: './public/labs/Lab2_solution.ipynb'
+- week: 3
+  days:
     - date: 'Feb 3'
       items:
         - type: 'Lecture'
@@ -79,6 +81,11 @@
           id: 'Notebook 5'
           name: Lecture 5 Jupyter notebook
           href: './public/lectures/Lecture5.ipynb'
+    - date: 'Feb 5'
+        - type: 'Lecture'
+          id: 'Notes 6'
+          name: Lecture 6 notes
+          href: './public/lectures/06_linear_regression.md'
 #         - type: 'Participation'
 #           id: '2'
 #           name: Lecture Participation 2
