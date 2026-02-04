@@ -82,6 +82,7 @@
           name: Lecture 5 Jupyter notebook
           href: './public/lectures/Lecture5.ipynb'
     - date: 'Feb 5'
+      items:
         - type: 'Lecture'
           id: 'Notes 6'
           name: Lecture 6 notes
