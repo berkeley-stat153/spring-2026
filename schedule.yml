@@ -85,7 +85,7 @@
       items:
         - type: 'Lecture'
           id: '6'
-          name: Lecture 6
+          name: Simple linear regression (part 2)
           href: './public/lectures/06_linear_regression.md'
         - type: 'Lecture'
           id: 'Notes 6'
