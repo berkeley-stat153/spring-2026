@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Finger Tap Test</title>
+  <style>
+    :root { --pad: 16px; --radius: 16px; }
+    body {
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      margin: 0;
+      padding: 24px;
+      background: #f7f7f8;
+      color: #111;
+    }
+    .wrap { max-width: 720px; margin: 0 auto; }
+    .card {
+      background: white;
+      border-radius: var(--radius);
+      padding: 20px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    }
+    h1 { font-size: 20px; margin: 0 0 8px 0; }
+    p { margin: 0 0 16px 0; color: #333; line-height: 1.35; }
+
+    .row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin: 16px 0; }
+    .stat {
+      background: #f3f4f6;
+      border-radius: 12px;
+      padding: 12px;
+      text-align: center;
+    }
+    .stat .label { font-size: 12px; color: #444; margin-bottom: 6px; }
+    .stat .value { font-size: 22px; font-variant-numeric: tabular-nums; }
+
+    .controls { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin: 12px 0 16px 0; }
+    button {
+      border: 0;
+      border-radius: 12px;
+      padding: 10px 14px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+    button.primary { background: #111; color: white; }
+    button.secondary { background: #e5e7eb; color: #111; }
+    button:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    .tap-area {
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+      cursor: pointer;
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, #ffffff, #f3f4f6);
+      border: 2px dashed #c7c7c7;
+      padding: 26px;
+      text-align: center;
+      min-height: 220px;
+      display: grid;
+      place-items: center;
+    }
+    .tap-area:active { transform: scale(0.995); }
+    .big { font-size: 34px; font-weight: 700; margin: 0; }
+    .hint { font-size: 13px; color: #444; margin-top: 10px; }
+    .footer { font-size: 12px; color: #555; margin-top: 14px; }
+    .pill {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: #111;
+      color: white;
+      font-size: 12px;
+      margin-left: 8px;
+      vertical-align: middle;
+    }
+
+    .settings { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+    .settings label { font-size: 13px; color: #333; }
+    input[type="number"] {
+      width: 80px;
+      padding: 8px 10px;
+      border-radius: 10px;
+      border: 1px solid #d1d5db;
+      font-size: 14px;
+    }
+    .note { font-size: 12px; color: #555; margin-top: 10px; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card" role="application" aria-label="Finger Tap Test">
+      <h1>Finger Tap Test</h1>
+      <p>Tap as fast as you can in the time window. Use mouse, trackpad, touch, or the spacebar.</p>
+
+      <div class="controls">
+        <button id="startBtn" class="primary">Start</button>
+        <button id="resetBtn" class="secondary">Reset</button>
+        <button id="csvBtn" class="secondary" disabled>Download CSV</button>
+
+        <div class="settings" aria-label="Settings">
+          <label for="durationInput">Duration (seconds)</label>
+          <input id="durationInput" type="number" min="3" max="60" step="1" value="10" />
+        </div>
+
+        <span id="statePill" class="pill" aria-live="polite">Ready</span>
+      </div>
+
+      <div class="row" aria-label="Statistics">
+        <div class="stat">
+          <div class="label">Time left</div>
+          <div id="timeLeft" class="value">10.00</div>
+        </div>
+        <div class="stat">
+          <div class="label">Taps</div>
+          <div id="tapCount" class="value">0</div>
+        </div>
+        <div class="stat">
+          <div class="label">Taps / second</div>
+          <div id="tps" class="value">0.00</div>
+        </div>
+      </div>
+
+      <div id="tapArea" class="tap-area" tabindex="0" aria-label="Tap area (click or press spacebar)">
+        <div>
+          <div id="tapPrompt" class="big">Tap here</div>
+          <div class="hint">Click/tap repeatedly, or press <strong>Space</strong>. The test starts when you press Start.</div>
+          <div class="note">Tip: On phones, use one finger and keep the device still.</div>
+        </div>
+      </div>
+
+      <div class="footer" id="resultText" aria-live="polite"></div>
+    </div>
+  </div>
+
+  <script>
+(() => {
+  const startBtn = document.getElementById("startBtn");
+  const resetBtn = document.getElementById("resetBtn");
+  const csvBtn = document.getElementById("csvBtn");
+  const durationInput = document.getElementById("durationInput");
+
+  const tapArea = document.getElementById("tapArea");
+  const statePill = document.getElementById("statePill");
+
+  const timeLeftEl = document.getElementById("timeLeft");
+  const tapCountEl = document.getElementById("tapCount");
+  const tpsEl = document.getElementById("tps");
+  const resultText = document.getElementById("resultText");
+
+  let running = false;
+  let taps = 0;
+
+  // High-resolution time.
+  let startTimeMs = 0;
+  let endTimeMs = 0;
+  let rafId = null;
+
+  // Absolute tap timestamps (ms) during the run.
+  let tapTimesMs = [];
+
+  function getDurationMs() {
+    const s = Number(durationInput.value);
+    const clamped = Number.isFinite(s) ? Math.min(30, Math.max(3, s)) : 10;
+    durationInput.value = String(clamped);
+    return clamped * 1000;
+  }
+
+  function setState(label) {
+    statePill.textContent = label;
+  }
+
+  function formatSeconds(ms) {
+    return (ms / 1000).toFixed(2);
+  }
+
+  // 5 significant digits; returns a string.
+  function sig5(x) {
+    return Number(x).toPrecision(5);
+  }
+
+  function updateUI(nowMs) {
+    const remaining = Math.max(0, endTimeMs - nowMs);
+    timeLeftEl.textContent = formatSeconds(remaining);
+
+    const elapsed = Math.max(0, nowMs - startTimeMs);
+    const elapsedSec = elapsed / 1000;
+    const rate = elapsedSec > 0 ? (taps / elapsedSec) : 0;
+    tpsEl.textContent = rate.toFixed(2);
+
+    if (remaining <= 0) {
+      stopTest();
+      return;
+    }
+    rafId = requestAnimationFrame(updateUI);
+  }
+
+  function startTest() {
+    if (running) return;
+
+    resultText.textContent = "";
+    taps = 0;
+    tapTimesMs = [];
+    tapCountEl.textContent = "0";
+    tpsEl.textContent = "0.00";
+    csvBtn.disabled = true;
+
+    const durMs = getDurationMs();
+    const now = performance.now();
+    startTimeMs = now;
+    endTimeMs = now + durMs;
+    running = true;
+
+    setState("Running");
+    startBtn.disabled = true;
+    durationInput.disabled = true;
+
+    tapArea.focus({ preventScroll: true });
+
+    if (rafId) cancelAnimationFrame(rafId);
+    rafId = requestAnimationFrame(updateUI);
+  }
+
+  function stopTest() {
+    if (!running) return;
+    running = false;
+
+    if (rafId) cancelAnimationFrame(rafId);
+    rafId = null;
+
+    const durMs = endTimeMs - startTimeMs;
+    const durSec = durMs / 1000;
+    const finalRate = durSec > 0 ? (taps / durSec) : 0;
+
+    timeLeftEl.textContent = "0.00";
+    tpsEl.textContent = finalRate.toFixed(2);
+
+    setState("Done");
+    startBtn.disabled = false;
+    durationInput.disabled = false;
+
+    resultText.textContent =
+      `Result: ${taps} taps in ${durSec.toFixed(0)} seconds (${finalRate.toFixed(2)} taps/s).`;
+
+    csvBtn.disabled = tapTimesMs.length === 0;
+  }
+
+  function resetAll() {
+    running = false;
+    if (rafId) cancelAnimationFrame(rafId);
+    rafId = null;
+
+    taps = 0;
+    tapTimesMs = [];
+    tapCountEl.textContent = "0";
+    tpsEl.textContent = "0.00";
+    timeLeftEl.textContent = Number(durationInput.value || 10).toFixed(2);
+
+    setState("Ready");
+    resultText.textContent = "";
+    startBtn.disabled = false;
+    durationInput.disabled = false;
+    csvBtn.disabled = true;
+  }
+
+  function registerTap() {
+    if (!running) return;
+
+    const now = performance.now();
+    if (now >= endTimeMs) return;
+
+    taps += 1;
+    tapCountEl.textContent = String(taps);
+
+    tapTimesMs.push(now);
+  }
+
+  function buildTapTimesCsv() {
+    const lines = [];
+    lines.push("tap_index,t_seconds,dt_seconds");
+
+    if (tapTimesMs.length === 0) return lines.join("\n");
+
+    const t0 = tapTimesMs[0];
+
+    for (let i = 0; i < tapTimesMs.length; i++) {
+      const tSec = (tapTimesMs[i] - t0) / 1000;
+      const dtSec = (i === 0) ? 0 : (tapTimesMs[i] - tapTimesMs[i - 1]) / 1000;
+      lines.push(`${i + 1},${sig5(tSec)},${sig5(dtSec)}`);
+    }
+
+    return lines.join("\n");
+  }
+
+
+
+  function downloadCsv() {
+    const csv = buildTapTimesCsv();
+    const blob = new Blob([csv], { type: "text/csv;charset=utf-8" });
+
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+
+    const ts = new Date().toISOString().replace(/[:.]/g, "-");
+    a.download = `finger_tap_intervals_${ts}.csv`;
+
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
+  }
+
+  // Pointer events handle mouse + touch.
+  tapArea.addEventListener("pointerdown", (e) => {
+    e.preventDefault();
+    registerTap();
+  }, { passive: false });
+
+  // Spacebar tapping.
+  document.addEventListener("keydown", (e) => {
+    if (e.code === "Space") {
+      e.preventDefault();
+      registerTap();
+    }
+  }, { passive: false });
+
+  startBtn.addEventListener("click", startTest);
+  resetBtn.addEventListener("click", resetAll);
+  csvBtn.addEventListener("click", downloadCsv);
+
+  resetAll();
+})();
+</script>
+</body>
+</html>
