@@ -60,6 +60,12 @@ jobs:
       #   run: |
       #     echo "After sed:"
       #     grep -R --line-number "spring-2026/spring-2026" ./_build/html || echo "no duplicates found"
+      - name: Copy standalone HTML apps into build output
+        run: |
+          mkdir -p ./_build/html/lectures
+          cp ./public/lectures/07_finger-tap.html ./_build/html/lectures/07_finger-tap.html
+          # sanity check
+          test -f ./_build/html/lectures/07_finger-tap.html
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
