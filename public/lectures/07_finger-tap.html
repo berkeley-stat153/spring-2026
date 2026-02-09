@@ -84,6 +84,18 @@
       font-size: 14px;
     }
     .note { font-size: 12px; color: #555; margin-top: 10px; }
+    .box-embed {
+      display: flex;
+      justify-content: center;
+      margin: 2rem 0;
+    }
+
+    .box-embed iframe {
+      width: 90vw;        /* responsive width */
+      max-width: 900px;   /* prevents it from getting too wide */
+      height: 600px;      /* enough to avoid internal scrolling */
+      border: none;
+    }
   </style>
 </head>
 <body>
@@ -331,6 +343,11 @@
   resetAll();
 })();
 </script>
-<iframe src="https://berkeley.app.box.com/f/9ae994d8af674fb381d1ba644a5a1afa" height="550" width="800"></iframe>
+<div class="box-embed">
+<iframe src="https://berkeley.app.box.com/f/9ae994d8af674fb381d1ba644a5a1afa"
+        title="box upload" 
+        allowfullscreen>      
+</iframe>
+</div>
 </body>
 </html>
