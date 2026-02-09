@@ -6,6 +6,7 @@
   <title>Finger Tap Test</title>
   <style>
     :root { --pad: 16px; --radius: 16px; }
+
     body {
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
       margin: 0;
@@ -96,6 +97,13 @@
       height: 600px;      /* enough to avoid internal scrolling */
       border: none;
     }
+    select {
+      padding: 8px 10px;
+      border-radius: 10px;
+      border: 1px solid #d1d5db;
+      font-size: 14px;
+      background: white;
+    }
   </style>
 </head>
 <body>
@@ -104,6 +112,34 @@
       <h1>Finger Tap Test</h1>
       <p>Tap as fast as you can in the time window. Use mouse, trackpad, touch, or the spacebar.</p>
 
+      <div id="participant-form" style="max-width: 800px; margin: 24px auto; display: grid; gap: 12px;">
+        <div style="display: grid; gap: 6px;">
+          <label for="handUsed"><strong>Hand used for tapping</strong></label>
+          <select id="handUsed" required>
+            <option value="" selected disabled>Select…</option>
+            <option value="left">Left</option>
+            <option value="right">Right</option>
+          </select>
+        </div>
+
+        <div style="display: grid; gap: 6px;">
+          <label for="fingerUsed"><strong>Finger used</strong></label>
+          <select id="fingerUsed" required>
+            <option value="" selected disabled>Select…</option>
+            <option value="index">Index</option>
+            <option value="pinky">Pinky</option>
+          </select>
+        </div>
+
+        <div style="display: grid; gap: 6px;">
+          <label for="handedness"><strong>Handedness</strong></label>
+          <select id="handedness" required>
+            <option value="" selected disabled>Select…</option>
+            <option value="left">Left-handed</option>
+            <option value="right">Right-handed</option>
+          </select>
+        </div>
+      </div>
       <div class="controls">
         <button id="startBtn" class="primary">Start</button>
         <button id="resetBtn" class="secondary">Reset</button>
@@ -151,6 +187,22 @@
   const csvBtn = document.getElementById("csvBtn");
   const durationInput = document.getElementById("durationInput");
 
+  const handUsedSel = document.getElementById("handUsed");
+  const fingerUsedSel = document.getElementById("fingerUsed");
+  const handednessSel = document.getElementById("handedness");
+
+  function getParticipantMeta() {
+    const hand_used = handUsedSel.value;
+    const finger_used = fingerUsedSel.value;
+    const handedness = handednessSel.value;
+
+    if (!hand_used || !finger_used || !handedness) {
+      alert("Please select hand used, finger used, and handedness before starting.");
+      return null;
+    }
+    return { hand_used, finger_used, handedness };
+  }
+
   const tapArea = document.getElementById("tapArea");
   const statePill = document.getElementById("statePill");
 
@@ -161,6 +213,7 @@
 
   let running = false;
   let taps = 0;
+  let participantMeta = null; 
 
   // High-resolution time.
   let startTimeMs = 0;
@@ -209,6 +262,15 @@
   function startTest() {
     if (running) return;
 
+    const meta = getParticipantMeta();
+    if (!meta) return;
+    participantMeta = meta;
+
+    // lock the dropdowns during the run
+    handUsedSel.disabled = true;
+    fingerUsedSel.disabled = true;
+    handednessSel.disabled = true;
+
     resultText.textContent = "";
     taps = 0;
     tapTimesMs = [];
@@ -254,6 +316,9 @@
       `Result: ${taps} taps in ${durSec.toFixed(0)} seconds (${finalRate.toFixed(2)} taps/s).`;
 
     csvBtn.disabled = tapTimesMs.length === 0;
+    handUsedSel.disabled = false;
+    fingerUsedSel.disabled = false;
+    handednessSel.disabled = false;
   }
 
   function resetAll() {
@@ -272,6 +337,10 @@
     startBtn.disabled = false;
     durationInput.disabled = false;
     csvBtn.disabled = true;
+    handUsedSel.disabled = false;
+    fingerUsedSel.disabled = false;
+    handednessSel.disabled = false;
+    participantMeta = null;
   }
 
   function registerTap() {
@@ -314,7 +383,19 @@
     a.href = url;
 
     const ts = new Date().toISOString().replace(/[:.]/g, "-");
-    a.download = `finger_tap_intervals_${ts}.csv`;
+
+    const meta = participantMeta || {
+      hand_used: "unknown",
+      finger_used: "unknown",
+      handedness: "unknown"
+    };
+
+    a.download =
+      `fingertap_` +
+      `hand-${meta.hand_used}_` +
+      `finger-${meta.finger_used}_` +
+      `handedness-${meta.handedness}_` +
+      `${ts}.csv`;
 
     document.body.appendChild(a);
     a.click();
