@@ -99,7 +99,7 @@
 
         <div class="settings" aria-label="Settings">
           <label for="durationInput">Duration (seconds)</label>
-          <input id="durationInput" type="number" min="3" max="60" step="1" value="30" />
+          <input id="durationInput" type="number" min="3" max="120" step="1" value="60" />
         </div>
 
         <span id="statePill" class="pill" aria-live="polite">Ready</span>
@@ -160,7 +160,7 @@
 
   function getDurationMs() {
     const s = Number(durationInput.value);
-    const clamped = Number.isFinite(s) ? Math.min(30, Math.max(3, s)) : 10;
+    const clamped = Number.isFinite(s) ? Math.min(120, Math.max(3, s)) : 10;
     durationInput.value = String(clamped);
     return clamped * 1000;
   }
