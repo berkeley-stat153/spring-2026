@@ -94,7 +94,7 @@
     - date: 'Feb 6'
       items:
         - type: 'Lab'
-          id: 'lab 3'
+          id: '3'
           name: Lab 3
           href: 'https://datahub.berkeley.edu/hub/user-redirect/git-pull?repo=https%3A%2F%2Fgithub.com%2Fberkeley-stat153%2Fspring-2026&branch=main&urlpath=lab%2Ftree%2Fspring-2026%2Fpublic%2Flabs%2FLab3.ipynb'
 - week: 4
@@ -104,7 +104,15 @@
         - type: 'Lecture'
           id: '7'
           name: Multiple linear regression 
-          href: './public/lectures/06_multiple_regression.md'
+          href: './public/lectures/07_multiple_regression.md'
+        - type: 'Lecture'
+          id: 'Notes 7'
+          name: Lecture 7 notes
+          href: './public/lectures/07_multiple_linear_regression_notes.md'
+	- type: 'Lecture'
+          id: 'Notebook 7'
+	  name: Lecture 7 notebook - tapping
+	  href: './public/lectures/TippyTaps.ipynb'
 
 #         - type: 'Participation'
 #           id: '2'
