@@ -60,7 +60,7 @@ project:
       children:
         - file: public/lectures/07_multiple_regression.md
         - file: public/lectures/07_multiple_linear_regression_notes.md
-	- file: public/lectures/TippyTaps.ipynb
+        - file: public/lectures/TippyTaps.ipynb
 
 site:
   template: book-theme

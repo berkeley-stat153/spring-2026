@@ -109,10 +109,14 @@
           id: 'Notes 7'
           name: Lecture 7 notes
           href: './public/lectures/07_multiple_linear_regression_notes.md'
-	- type: 'Lecture'
-          id: 'Notebook 7'
-	  name: Lecture 7 notebook - tapping
-	  href: './public/lectures/TippyTaps.ipynb'
+        - type: 'Lecture'
+                  id: 'Notebook 7'
+            name: Lecture 7 notebook - tapping
+            href: './public/lectures/TippyTaps.ipynb'
+    # - date: 'Feb 12'
+    #   items:
+    #     - type: 'Lecture'
+    #       id: '8'
 
 #         - type: 'Participation'
 #           id: '2'
