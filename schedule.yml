@@ -113,6 +113,12 @@
           id: 'Notebook 7'
           name: Lecture 7 notebook - tapping
           href: './public/lectures/TippyTaps.ipynb'
+    - date: 'Feb 13'
+      items:
+        - type: 'Lab'
+          id: '4'
+          name: Lab 4
+          href: 'https://datahub.berkeley.edu/hub/user-redirect/git-pull?repo=https%3A%2F%2Fgithub.com%2Fberkeley-stat153%2Fspring-2026&branch=main&urlpath=lab%2Ftree%2Fspring-2026%2Fpublic%2Flabs%2FLab4.ipynb'
     # - date: 'Feb 12'
     #   items:
     #     - type: 'Lecture'
