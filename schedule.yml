@@ -149,13 +149,13 @@
         #   id: 'Notes 9'
         #   name: Lecture 9 notes
         #   href: './public/lectures/09_nonlinear_regression_notes.md'
-    - date: 'Feb 18'
+    - date: 'Feb 19'
       items:
         - type: 'Lecture'
           id: '10'
           name: Regularization
           href: '.'
-    - date: 'Feb 19'
+    - date: 'Feb 20'
       items:
         - type: 'Lab'
           id: '5'
