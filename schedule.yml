@@ -111,7 +111,17 @@
           href: './public/lectures/07_multiple_linear_regression_notes.md'
         - type: 'Lecture'
           id: 'Notebook 7'
-          name: Lecture 7 notebook - tapping
+          name: Lecture 7 and 8 notebook - tapping
+          href: './public/lectures/TippyTaps.ipynb'
+    - date: 'Feb 12'
+      items:
+        - type: 'Lecture'
+          id: '8'
+          name: Multiple linear regression part 2
+          href: './public/lectures/08_multiple_regression2.md'
+        - type: 'Lecture'
+          id: 'Notebook 8 (same as 7!)'
+          name: Lecture 7 and 8 notebook - tapping
           href: './public/lectures/TippyTaps.ipynb'
     - date: 'Feb 13'
       items:
