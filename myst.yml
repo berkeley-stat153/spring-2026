@@ -56,6 +56,7 @@ project:
         - url: 'https://datahub.berkeley.edu/hub/user-redirect/git-pull?repo=https%3A%2F%2Fgithub.com%2Fberkeley-stat153%2Fspring-2026&branch=main&urlpath=lab%2Ftree%2Fspring-2026%2Fpublic%2Flabs%2FLab3.ipynb'
           title: 'Lab 3'
           open_in_same_tab: false
+        - file: public/labs/Lab3_solution.ipynb
     - title: Week 4
       children:
         - file: public/lectures/07_multiple_regression.md
@@ -65,6 +66,7 @@ project:
         - url: 'https://datahub.berkeley.edu/hub/user-redirect/git-pull?repo=https%3A%2F%2Fgithub.com%2Fberkeley-stat153%2Fspring-2026&branch=main&urlpath=lab%2Ftree%2Fspring-2026%2Fpublic%2Flabs%2FLab4.ipynb'
           title: 'Lab 4'
           open_in_same_tab: false
+        - file: public/labs/Lab4_solution.ipynb
     - title: Week 5
       children:
         - file: public/lectures/09_nonlinear_regression.md
