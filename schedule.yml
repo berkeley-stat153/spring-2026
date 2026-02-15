@@ -129,28 +129,28 @@
           id: '4'
           name: Lab 4
           href: 'https://datahub.berkeley.edu/hub/user-redirect/git-pull?repo=https%3A%2F%2Fgithub.com%2Fberkeley-stat153%2Fspring-2026&branch=main&urlpath=lab%2Ftree%2Fspring-2026%2Fpublic%2Flabs%2FLab4.ipynb'
-    # - date: 'Feb 12'
-    #   items:
-    #     - type: 'Lecture'
-    #       id: '8'
+- week: 5
+  days:
+    - date: 'Feb 17'
+      items:
+        - type: 'Lecture'
+          id: '9'
+          name: Nonlinear regression 
+          href: './public/lectures/09_nonlinear_regression.md'
+        # - type: 'Lecture'
+        #   id: 'Notes 9'
+        #   name: Lecture 9 notes
+        #   href: './public/lectures/09_nonlinear_regression_notes.md'
+    - date: 'Feb 18'
+      items:
+        - type: 'Lecture'
+          id: '10'
+          name: Regularization
+          href: '.'
+    - date: 'Feb 19'
+      items:
+        - type: 'Lab'
+          id: '5'
+          name: Lab 5
+          href: '.'
 
-#         - type: 'Participation'
-#           id: '2'
-#           name: Lecture Participation 2
-#           href: 'https://ds100.org/fa23/lecture/lec01'
-#           auxil:
-#             id: 'Note 2'
-#             href: './unit2.html'
-#     - date: 'Jan 29'
-#       items:
-#         - type: 'Lecture'
-#           id: '2'
-#           name: Pandas 1
-#           href: 'https://ds100.org/fa23/lecture/lec01'
-#         - type: 'Participation'
-#           id: '2'
-#           name: Lecture Participation 2
-#           href: 'https://ds100.org/fa23/lecture/lec01'
-#           auxil:
-#             id: 'Note 2'
-#            href: './unit2.html'
