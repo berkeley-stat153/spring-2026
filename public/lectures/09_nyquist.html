@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Nyquist Limit — Interactive Demo</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.9/babel.min.js"></script>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0a0e1a; overflow-x: hidden; }
+  input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 6px;
+    border-radius: 3px;
+    background: #1e293b;
+    outline: none;
+    cursor: pointer;
+  }
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    cursor: pointer;
+  }
+  input.signal-slider::-webkit-slider-thumb { background: #f472b6; }
+  input.sample-slider::-webkit-slider-thumb { background: #22d3ee; }
+  input[type="range"]::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    cursor: pointer;
+  }
+  input.signal-slider::-moz-range-thumb { background: #f472b6; }
+  input.sample-slider::-moz-range-thumb { background: #22d3ee; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+const { useState, useMemo, useEffect, useRef } = React;
+
+const COLORS = {
+  bg: "#0a0e1a",
+  panel: "#111827",
+  border: "#1e293b",
+  accent: "#22d3ee",
+  accentDim: "rgba(34, 211, 238, 0.15)",
+  signal: "#f472b6",
+  signalDim: "rgba(244, 114, 182, 0.2)",
+  alias: "#facc15",
+  aliasDim: "rgba(250, 204, 21, 0.25)",
+  text: "#e2e8f0",
+  textMuted: "#94a3b8",
+  success: "#34d399",
+  danger: "#f87171",
+  warning: "#fbbf24",
+};
+
+function InfoCard({ title, body }) {
+  return (
+    <div style={{
+      background: COLORS.panel,
+      border: `1px solid ${COLORS.border}`,
+      borderRadius: 10,
+      padding: 14,
+    }}>
+      <div style={{
+        fontSize: 11, fontWeight: 800, color: COLORS.accent,
+        marginBottom: 6, letterSpacing: "0.5px", textTransform: "uppercase",
+      }}>{title}</div>
+      <div style={{ fontSize: 12, color: COLORS.textMuted, lineHeight: 1.5 }}>{body}</div>
+    </div>
+  );
+}
+
+function NyquistDemo() {
+  const [signalFreq, setSignalFreq] = useState(3);
+  const [sampleRate, setSampleRate] = useState(8);
+  const [showAlias, setShowAlias] = useState(true);
+  const [animating, setAnimating] = useState(false);
+  const [phase, setPhase] = useState(0);
+  const canvasRef = useRef(null);
+  const animRef = useRef(null);
+
+  const nyquistFreq = sampleRate / 2;
+  const ratio = sampleRate / signalFreq;
+  const isAboveNyquist = signalFreq > nyquistFreq;
+  const isAtLimit = Math.abs(signalFreq - nyquistFreq) < 0.3;
+
+  const aliasFreq = useMemo(() => {
+    if (!isAboveNyquist) return null;
+    let f = signalFreq % sampleRate;
+    if (f > sampleRate / 2) f = sampleRate - f;
+    return Math.round(f * 100) / 100;
+  }, [signalFreq, sampleRate, isAboveNyquist]);
+
+  useEffect(() => {
+    if (!animating) return;
+    let running = true;
+    const step = () => {
+      if (!running) return;
+      setPhase((p) => (p + 0.02) % (Math.PI * 2));
+      animRef.current = requestAnimationFrame(step);
+    };
+    animRef.current = requestAnimationFrame(step);
+    return () => { running = false; cancelAnimationFrame(animRef.current); };
+  }, [animating]);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    const dpr = window.devicePixelRatio || 1;
+    const rect = canvas.getBoundingClientRect();
+    canvas.width = rect.width * dpr;
+    canvas.height = rect.height * dpr;
+    ctx.scale(dpr, dpr);
+    const W = rect.width;
+    const H = rect.height;
+
+    ctx.fillStyle = COLORS.bg;
+    ctx.fillRect(0, 0, W, H);
+
+    const pad = { left: 50, right: 20, top: 30, bottom: 40 };
+    const plotW = W - pad.left - pad.right;
+    const plotH = H - pad.top - pad.bottom;
+    const midY = pad.top + plotH / 2;
+
+    ctx.strokeStyle = COLORS.border;
+    ctx.lineWidth = 1;
+    for (let i = 0; i <= 4; i++) {
+      const y = pad.top + (plotH / 4) * i;
+      ctx.beginPath();
+      ctx.moveTo(pad.left, y);
+      ctx.lineTo(W - pad.right, y);
+      ctx.stroke();
+    }
+
+    ctx.fillStyle = COLORS.textMuted;
+    ctx.font = "11px monospace";
+    ctx.textAlign = "right";
+    ctx.fillText("1.0", pad.left - 8, pad.top + 4);
+    ctx.fillText("0.0", pad.left - 8, midY + 4);
+    ctx.fillText("-1.0", pad.left - 8, pad.top + plotH + 4);
+    ctx.textAlign = "center";
+    ctx.fillText("Time →", pad.left + plotW / 2, H - 5);
+
+    const duration = 1;
+    const numPoints = 800;
+    const xForT = (t) => pad.left + (t / duration) * plotW;
+    const yForV = (v) => midY - v * (plotH / 2) * 0.85;
+
+    // Original signal
+    ctx.beginPath();
+    ctx.strokeStyle = COLORS.signal;
+    ctx.lineWidth = 2.5;
+    ctx.shadowColor = COLORS.signal;
+    ctx.shadowBlur = 8;
+    for (let i = 0; i <= numPoints; i++) {
+      const t = (i / numPoints) * duration;
+      const v = Math.sin(2 * Math.PI * signalFreq * t + phase);
+      const x = xForT(t);
+      const y = yForV(v);
+      if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+    }
+    ctx.stroke();
+    ctx.shadowBlur = 0;
+
+    // Sample points
+    const sampleInterval = 1 / sampleRate;
+    const samples = [];
+    for (let t = 0; t <= duration + 0.001; t += sampleInterval) {
+      if (t > duration) break;
+      const v = Math.sin(2 * Math.PI * signalFreq * t + phase);
+      samples.push({ t, v });
+    }
+
+    ctx.strokeStyle = COLORS.accentDim;
+    ctx.lineWidth = 1;
+    ctx.setLineDash([3, 3]);
+    samples.forEach(({ t, v }) => {
+      ctx.beginPath();
+      ctx.moveTo(xForT(t), midY);
+      ctx.lineTo(xForT(t), yForV(v));
+      ctx.stroke();
+    });
+    ctx.setLineDash([]);
+
+    ctx.shadowColor = COLORS.accent;
+    ctx.shadowBlur = 12;
+    samples.forEach(({ t, v }) => {
+      ctx.beginPath();
+      ctx.arc(xForT(t), yForV(v), 5, 0, Math.PI * 2);
+      ctx.fillStyle = COLORS.accent;
+      ctx.fill();
+      ctx.strokeStyle = "#fff";
+      ctx.lineWidth = 1.5;
+      ctx.stroke();
+    });
+    ctx.shadowBlur = 0;
+
+    // Alias wave
+    if (showAlias && isAboveNyquist && aliasFreq !== null) {
+      let bestPhase = 0;
+      let bestError = Infinity;
+      for (let p = 0; p < Math.PI * 2; p += 0.05) {
+        let err = 0;
+        samples.forEach(({ t, v }) => {
+          const predicted = Math.sin(2 * Math.PI * aliasFreq * t + p);
+          err += (predicted - v) ** 2;
+        });
+        if (err < bestError) { bestError = err; bestPhase = p; }
+      }
+
+      ctx.beginPath();
+      ctx.strokeStyle = COLORS.alias;
+      ctx.lineWidth = 2;
+      ctx.shadowColor = COLORS.alias;
+      ctx.shadowBlur = 6;
+      ctx.setLineDash([6, 4]);
+      for (let i = 0; i <= numPoints; i++) {
+        const t = (i / numPoints) * duration;
+        const v = Math.sin(2 * Math.PI * aliasFreq * t + bestPhase);
+        const x = xForT(t);
+        const y = yForV(v);
+        if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+      }
+      ctx.stroke();
+      ctx.setLineDash([]);
+      ctx.shadowBlur = 0;
+    }
+
+    // Legend
+    const legendY = pad.top + 10;
+    ctx.font = "bold 12px monospace";
+    ctx.beginPath();
+    ctx.moveTo(W - pad.right - 220, legendY);
+    ctx.lineTo(W - pad.right - 195, legendY);
+    ctx.strokeStyle = COLORS.signal;
+    ctx.lineWidth = 2.5;
+    ctx.setLineDash([]);
+    ctx.stroke();
+    ctx.fillStyle = COLORS.signal;
+    ctx.textAlign = "left";
+    ctx.fillText(`Signal (${signalFreq} Hz)`, W - pad.right - 190, legendY + 4);
+
+    if (showAlias && isAboveNyquist && aliasFreq !== null) {
+      ctx.setLineDash([6, 4]);
+      ctx.beginPath();
+      ctx.moveTo(W - pad.right - 220, legendY + 20);
+      ctx.lineTo(W - pad.right - 195, legendY + 20);
+      ctx.strokeStyle = COLORS.alias;
+      ctx.lineWidth = 2;
+      ctx.stroke();
+      ctx.setLineDash([]);
+      ctx.fillStyle = COLORS.alias;
+      ctx.fillText(`Alias (${aliasFreq} Hz)`, W - pad.right - 190, legendY + 24);
+    }
+  }, [signalFreq, sampleRate, phase, showAlias, isAboveNyquist, aliasFreq]);
+
+  const statusColor = isAboveNyquist ? COLORS.danger : isAtLimit ? COLORS.warning : COLORS.success;
+  const statusText = isAboveNyquist
+    ? "ALIASING — Below Nyquist Rate"
+    : isAtLimit ? "AT THE LIMIT — Barely Sufficient" : "SAFE — Above Nyquist Rate";
+  const statusIcon = isAboveNyquist ? "⚠" : isAtLimit ? "◈" : "✓";
+
+  return (
+    <div style={{
+      background: COLORS.bg, minHeight: "100vh", color: COLORS.text,
+      fontFamily: "'JetBrains Mono', 'Fira Code', 'SF Mono', monospace",
+      padding: "24px", boxSizing: "border-box",
+    }}>
+      {/* Header */}
+      <div style={{ textAlign: "center", marginBottom: 24 }}>
+        <h1 style={{
+          fontSize: 28, fontWeight: 800, margin: 0, letterSpacing: "-0.5px",
+          background: `linear-gradient(135deg, ${COLORS.accent}, ${COLORS.signal})`,
+          WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent",
+        }}>The Nyquist Limit</h1>
+        <p style={{
+          color: COLORS.textMuted, fontSize: 13, margin: "6px 0 0",
+          maxWidth: 520, marginLeft: "auto", marginRight: "auto", lineHeight: 1.5,
+        }}>
+          To accurately reconstruct a signal, you must sample at{" "}
+          <span style={{ color: COLORS.accent, fontWeight: 700 }}>≥ 2× its frequency</span>.
+          Below that threshold, the samples fit a different, lower-frequency wave — this is <em>aliasing</em>.
+        </p>
+      </div>
+
+      {/* Status bar */}
+      <div style={{
+        background: `${statusColor}11`, border: `1px solid ${statusColor}44`,
+        borderRadius: 8, padding: "10px 16px", marginBottom: 16,
+        display: "flex", alignItems: "center", justifyContent: "center", gap: 12,
+        maxWidth: 700, margin: "0 auto 16px", flexWrap: "wrap",
+      }}>
+        <span style={{ fontSize: 20 }}>{statusIcon}</span>
+        <span style={{ color: statusColor, fontWeight: 700, fontSize: 14 }}>{statusText}</span>
+        <span style={{ color: COLORS.textMuted, fontSize: 12, marginLeft: 8 }}>
+          Nyquist freq = {nyquistFreq} Hz · Ratio = {ratio.toFixed(2)}×
+        </span>
+      </div>
+
+      {/* Canvas */}
+      <div style={{
+        maxWidth: 700, margin: "0 auto",
+        border: `1px solid ${COLORS.border}`, borderRadius: 12,
+        overflow: "hidden", background: COLORS.bg,
+      }}>
+        <canvas ref={canvasRef} style={{ width: "100%", height: 300, display: "block" }} />
+      </div>
+
+      {/* Controls */}
+      <div style={{
+        maxWidth: 700, margin: "16px auto 0",
+        display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16,
+      }}>
+        {/* Signal Frequency */}
+        <div style={{
+          background: COLORS.panel, border: `1px solid ${COLORS.border}`,
+          borderRadius: 10, padding: 16,
+        }}>
+          <div style={{
+            display: "flex", justifyContent: "space-between",
+            alignItems: "baseline", marginBottom: 10,
+          }}>
+            <label style={{ fontSize: 12, color: COLORS.textMuted }}>Signal Frequency</label>
+            <span style={{ fontSize: 20, fontWeight: 800, color: COLORS.signal }}>{signalFreq} Hz</span>
+          </div>
+          <input type="range" className="signal-slider" min={1} max={20} step={0.5}
+            value={signalFreq} onChange={(e) => setSignalFreq(parseFloat(e.target.value))} />
+          <div style={{
+            display: "flex", justifyContent: "space-between",
+            fontSize: 10, color: COLORS.textMuted, marginTop: 4,
+          }}>
+            <span>1 Hz</span><span>20 Hz</span>
+          </div>
+        </div>
+
+        {/* Sample Rate */}
+        <div style={{
+          background: COLORS.panel, border: `1px solid ${COLORS.border}`,
+          borderRadius: 10, padding: 16,
+        }}>
+          <div style={{
+            display: "flex", justifyContent: "space-between",
+            alignItems: "baseline", marginBottom: 10,
+          }}>
+            <label style={{ fontSize: 12, color: COLORS.textMuted }}>Sample Rate</label>
+            <span style={{ fontSize: 20, fontWeight: 800, color: COLORS.accent }}>{sampleRate} Hz</span>
+          </div>
+          <input type="range" className="sample-slider" min={2} max={40} step={1}
+            value={sampleRate} onChange={(e) => setSampleRate(parseInt(e.target.value))} />
+          <div style={{
+            display: "flex", justifyContent: "space-between",
+            fontSize: 10, color: COLORS.textMuted, marginTop: 4,
+          }}>
+            <span>2 Hz</span><span>40 Hz</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Buttons */}
+      <div style={{
+        maxWidth: 700, margin: "16px auto 0",
+        display: "flex", gap: 12, alignItems: "center", flexWrap: "wrap",
+      }}>
+        <button onClick={() => setAnimating(!animating)} style={{
+          background: animating ? COLORS.danger + "33" : COLORS.accent + "22",
+          border: `1px solid ${animating ? COLORS.danger : COLORS.accent}66`,
+          color: animating ? COLORS.danger : COLORS.accent,
+          padding: "8px 20px", borderRadius: 8, cursor: "pointer",
+          fontFamily: "inherit", fontWeight: 700, fontSize: 13,
+        }}>{animating ? "■ Stop" : "▶ Animate"}</button>
+
+        <button onClick={() => setShowAlias(!showAlias)} style={{
+          background: showAlias ? COLORS.alias + "22" : "transparent",
+          border: `1px solid ${showAlias ? COLORS.alias : COLORS.border}`,
+          color: showAlias ? COLORS.alias : COLORS.textMuted,
+          padding: "8px 20px", borderRadius: 8, cursor: "pointer",
+          fontFamily: "inherit", fontWeight: 700, fontSize: 13,
+        }}>{showAlias ? "◉" : "○"} Show Alias Wave</button>
+
+        <div style={{ marginLeft: "auto", textAlign: "right" }}>
+          {isAboveNyquist && aliasFreq !== null && (
+            <span style={{ fontSize: 12, color: COLORS.alias }}>
+              Samples appear as a <strong>{aliasFreq} Hz</strong> signal
+            </span>
+          )}
+        </div>
+      </div>
+
+      {/* Info cards */}
+      <div style={{
+        maxWidth: 700, margin: "20px auto 0",
+        display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 12,
+      }}>
+        <InfoCard title="Nyquist Theorem"
+          body="A signal of frequency f must be sampled at ≥ 2f samples/sec to be perfectly reconstructed." />
+        <InfoCard title="Aliasing"
+          body="When undersampled, a high-frequency signal masquerades as a lower frequency — the reconstructed wave is wrong." />
+        <InfoCard title="Try It"
+          body="Set signal to 8 Hz and sample rate to 10 Hz. The 8 Hz wave aliases to 2 Hz — a completely different signal!" />
+      </div>
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<NyquistDemo />);
+</script>
+</body>
+</html>
