@@ -112,6 +112,8 @@ This $f_\text{max}$ is also called the **Nyquist Frequency**. If the true signal
 
 Also, this becomes important when we are trying to estimate $f$ via least squares, because if framed in this way we only have to test $f \sim \text{unif}[0, 1/2]$
 
+See a demo of [how the Nyquist Limit works](./09_nyquist.html)
+
 # Least squares estimation of $\beta, f, \sigma$
 
 To estimate the parameters of this regression, we will use the same basic estimation as in prior lectures (least squares):
