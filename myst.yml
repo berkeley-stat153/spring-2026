@@ -70,7 +70,7 @@ project:
     - title: Week 5
       children:
         - file: public/lectures/09_nonlinear_regression.md
-        #- file: public/lectures/09_nonlinear_regression_notes.md
+        - file: public/lectures/09_nonlinear_regression_notes.md
 
 site:
   template: book-theme
