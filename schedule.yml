@@ -154,7 +154,7 @@
         - type: 'Lecture'
           id: '10'
           name: Regularization
-          href: '.'
+          href: './public/lectures/10_regularization.md'
     - date: 'Feb 20'
       items:
         - type: 'Lab'

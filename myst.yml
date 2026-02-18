@@ -71,6 +71,8 @@ project:
       children:
         - file: public/lectures/09_nonlinear_regression.md
         - file: public/lectures/09_nonlinear_regression_notes.md
+        - file: public/lectures/10_regularization.md
+        #- file: public/lectures/10_regularization_notes.md
 
 site:
   template: book-theme
