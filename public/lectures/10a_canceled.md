@@ -1,5 +1,5 @@
 ---
-title: "Lecture - canceled"
+title: "Lecture 2/19 - canceled"
 ---
 
 * The lecture for 2/19 is canceled due to instructor illness. Please see reading below for next week:
