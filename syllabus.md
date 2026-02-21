@@ -104,9 +104,9 @@ Topics will be available on the [course website](https://stat153.berkeley.edu/sp
 | Feb. 10  | Multiple Linear Regression                           | HW1 due         |
 | Feb. 12  | Multiple Linear Regression (cont'd)                                 |    |
 | Feb. 17  | Nonlinear Regression          |                 |
-| Feb. 19  | Smoothing and regularization (ridge, LASSO) | HW2 available                |
-| Feb. 24  | Smoothing and regularization (ridge, LASSO - cont'd)          |                 |
-| Feb. 26  | Smoothing and regularization (ridge, LASSO - cont'd) |                 |
+| Feb. 19  | Class canceled | HW2 available                |
+| Feb. 24  | Cross-validation, smoothing, regularization          |                 |
+| Feb. 26  | Cross-validation, smoothing, regularization (cont'd) |                 |
 | Mar. 3   | Power spectral analysis                              | HW2 due         |
 | Mar. 5   | Power spectral analysis (cont'd)                     | HW3 available   |
 | Mar. 10  | Time frequency analysis                              |                 |
