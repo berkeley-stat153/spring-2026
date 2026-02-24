@@ -78,7 +78,8 @@ project:
     - title: Week 6
       children:
         - file: public/lectures/10_regularization.md
-        #- file: public/lectures/10_regularization_notes.md
+        - file: public/lectures/10_regularization_notes.md
+        - file: public/lectures/Lecture10.ipynb
 
 site:
   template: book-theme
