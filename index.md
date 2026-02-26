@@ -3,10 +3,6 @@ title: "Stat 153 / Stat 248: Introduction to Time Series"
 subtitle: "UC Berkeley, Spring 2026"
 ---
 
-:::{attention} Class canceled 2/19
-Class is canceled Thursday 2/19. We will pick up with material on cross-validation and regularization next week. Lab is still scheduled for 2/20 and will be posted. 
-:::
-
 # Course Description 
 An introduction to time series analysis in the time domain and spectral domain. Topics will include: estimation of trends and seasonal effects, autoregressive moving average models, forecasting, indicators, harmonic analysis, spectra. This course uses Python as its primary computing language.
 
