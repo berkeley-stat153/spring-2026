@@ -167,9 +167,9 @@
     - date: 'Feb 24'
       items:
         - type: 'Lecture'
-          id: 'Notes 10'
-          name: Lecture 10 notes
-          href: './public/lectures/10_regularization_notes.md'
+          id: '10'
+          name: Cross-validation and regularization
+          href: './public/lectures/10_regularization.md'
         - type: 'Lecture'
           id: 'Notes 10'
           name: Lecture 10 notes
@@ -186,3 +186,15 @@
           id: '6'
           name: Lab 6
           href: 'https://datahub.berkeley.edu/hub/user-redirect/git-pull?repo=https%3A%2F%2Fgithub.com%2Fberkeley-stat153%2Fspring-2026&branch=main&urlpath=lab%2Ftree%2Fspring-2026%2Fpublic%2Flabs%2FLab6.ipynb'
+- week: 7
+  days:
+    - date: 'Mar 3'
+      items:
+        - type: 'Lecture'
+          id: '12'
+          name: Power Spectral Analysis
+          href: './public/lectures/12_spectral_analysis.md'
+        - type: 'Lecture'
+          id: 'Notes 12'
+          name: Lecture 12 notes
+          href: './public/lectures/12_spectral_analysis_notes.md'
