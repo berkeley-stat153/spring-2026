@@ -29,9 +29,9 @@ $$
 \begin{aligned}
 \gamma_y(t,s) &= \text{cov}(y_t, y_s)\\
 &= \text{cov} (U_1 \cos(\lambda t) + U_2 \sin (\lambda t), U_1 \cos(\lambda s) + U_2 \sin (\lambda s))\\
-&= \text{cov} (U_1 \cos(\lambda t),U_1 \cos(\lambda s)) + \text{cov} (U_1 \cos(\lambda t),U_1 \sin(\lambda s)) + \\
-& \quad \text{cov} (U_1 \sin(\lambda t),U_1 \cos(\lambda s)) +\\
-& \quad \text{cov} (U_1 \sin(\lambda t),U_1 \sin(\lambda s))\\
+&= \text{cov} (U_1 \cos(\lambda t),U_1 \cos(\lambda s)) + \text{cov} (U_1 \cos(\lambda t),U_2 \sin(\lambda s)) + \\
+& \quad \text{cov} (U_2 \sin(\lambda t),U_1 \cos(\lambda s)) +\\
+& \quad \text{cov} (U_2 \sin(\lambda t),U_2 \sin(\lambda s))\\
 &= \sigma^2 \cos (\lambda t) \cos (\lambda s) + 0 + 0 + \sigma^2 \sin (\lambda t) \sin(\lambda s)\\
 &= \sigma^2 [\cos (\lambda t) \cos (\lambda s) + \sin (\lambda t) \sin (\lambda s)]\\
 &= \sigma^2 \cos (\lambda(t-s))
