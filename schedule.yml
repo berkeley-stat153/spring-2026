@@ -198,3 +198,7 @@
           id: 'Notes 12'
           name: Lecture 12 notes
           href: './public/lectures/12_spectral_analysis_notes.md'
+        - type: 'Lecture'
+          id: 'Notebook 12'
+          name: Lecture 12 notebook
+          href: './public/lectures/Lecture12.ipynb'

@@ -88,6 +88,7 @@ project:
       children:
         - file: public/lectures/12_spectral_analysis.md
         - file: public/lectures/12_spectral_analysis_notes.md
+        - file: public/lectures/Lecture12.ipynb
 
 site:
   template: book-theme
