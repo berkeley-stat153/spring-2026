@@ -162,6 +162,10 @@
           id: '5'
           name: Lab 5
           href: 'https://datahub.berkeley.edu/hub/user-redirect/git-pull?repo=https%3A%2F%2Fgithub.com%2Fberkeley-stat153%2Fspring-2026&branch=main&urlpath=lab%2Ftree%2Fspring-2026%2Fpublic%2Flabs%2FLab5.ipynb'
+        - type: 'Lab'
+          id: 'Solutions 5'
+          name: 'Lab 5 Solutions'
+          href: './public/labs/Lab5_solution.ipynb'
 - week: 6
   days:
     - date: 'Feb 24'
@@ -186,6 +190,10 @@
           id: '6'
           name: Lab 6
           href: 'https://datahub.berkeley.edu/hub/user-redirect/git-pull?repo=https%3A%2F%2Fgithub.com%2Fberkeley-stat153%2Fspring-2026&branch=main&urlpath=lab%2Ftree%2Fspring-2026%2Fpublic%2Flabs%2FLab6.ipynb'
+        - type: 'Lab'
+          id: 'Solutions 6'
+          name: 'Lab 6 Solutions'
+          href: './public/labs/Lab6_solution.ipynb'
 - week: 7
   days:
     - date: 'Mar 3'
@@ -202,3 +210,19 @@
           id: 'Notebook 12'
           name: Lecture 12 notebook
           href: './public/lectures/Lecture12.ipynb'
+    - date: 'Mar 5'
+      items:
+        - type: 'Lecture'
+          id: '13'
+          name: Power Spectral Analysis 2
+          href: './public/lectures/13_spectral_analysis_2.md'
+        - type: 'Lecture'
+          id: 'Notes 13'
+          name: Lecture 13 notes
+          href: './public/lectures/13_spectral_analysis_notes.md'
+    - date: 'Mar 6'
+      items:
+        - type: 'Lab'
+          id: '7'
+          name: Lab 7
+          href: 'https://datahub.berkeley.edu/hub/user-redirect/git-pull?repo=https%3A%2F%2Fgithub.com%2Fberkeley-stat153%2Fspring-2026&branch=main&urlpath=lab%2Ftree%2Fspring-2026%2Fpublic%2Flabs%2FLab7.ipynb'
