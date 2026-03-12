@@ -100,6 +100,7 @@ project:
         - file: public/lectures/14_spectral_analysis_time_frequency.md
         - file: public/lectures/14_spectral_analysis_time_frequency_notes.md
         - file: public/lectures/Lecture14.ipynb
+        - file: public/lectures/Lecture15.ipynb
 
 site:
   template: book-theme

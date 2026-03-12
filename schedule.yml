@@ -242,3 +242,7 @@
           id: 'Notebook 14'
           name: Lecture 14 notebook
           href: './public/lectures/Lecture14.ipynb'
+        - type: 'Lecture'
+          id: 'Notebook 15'
+          name: Lecture 15 notebook
+          href: './public/lectures/Lecture15.ipynb'
