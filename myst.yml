@@ -75,6 +75,7 @@ project:
         - url: 'https://datahub.berkeley.edu/hub/user-redirect/git-pull?repo=https%3A%2F%2Fgithub.com%2Fberkeley-stat153%2Fspring-2026&branch=main&urlpath=lab%2Ftree%2Fspring-2026%2Fpublic%2Flabs%2FLab5.ipynb'
           title: 'Lab 5'
           open_in_same_tab: false
+        - file: public/labs/Lab5_solution.ipynb
     - title: Week 6
       children:
         - file: public/lectures/10_regularization.md
@@ -84,6 +85,7 @@ project:
         - url: 'https://datahub.berkeley.edu/hub/user-redirect/git-pull?repo=https%3A%2F%2Fgithub.com%2Fberkeley-stat153%2Fspring-2026&branch=main&urlpath=lab%2Ftree%2Fspring-2026%2Fpublic%2Flabs%2FLab6.ipynb'
           title: 'Lab 6'
           open_in_same_tab: false
+        - file: public/labs/Lab6_solution.ipynb
     - title: Week 7
       children:
         - file: public/lectures/12_spectral_analysis.md
@@ -94,6 +96,7 @@ project:
         - url: 'https://datahub.berkeley.edu/hub/user-redirect/git-pull?repo=https%3A%2F%2Fgithub.com%2Fberkeley-stat153%2Fspring-2026&branch=main&urlpath=lab%2Ftree%2Fspring-2026%2Fpublic%2Flabs%2FLab7.ipynb'
           title: 'Lab 7'
           open_in_same_tab: false
+        - file: public/labs/Lab7_solution.ipynb
         - file: public/labs/Lab7_PracticeQuestions_answers.md
     - title: Week 8
       children:
@@ -101,6 +104,9 @@ project:
         - file: public/lectures/14_spectral_analysis_time_frequency_notes.md
         - file: public/lectures/Lecture14.ipynb
         - file: public/lectures/Lecture15.ipynb
+    # - title: Week 9
+    #   children:
+    #     - file: public/lectures/16_ar_models.md
 
 site:
   template: book-theme
