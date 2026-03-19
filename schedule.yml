@@ -246,7 +246,37 @@
           id: 'Notebook 14'
           name: Lecture 14 notebook
           href: './public/lectures/Lecture14.ipynb'
+    - date: 'Mar 11'
+      items:
         - type: 'Lecture'
           id: 'Notebook 15'
           name: Lecture 15 notebook
           href: './public/lectures/Lecture15.ipynb'
+    - date: 'Mar 12'
+      items:
+        - type: 'Lab'
+          id: '8'
+          name: Exam Review
+          href: ''
+- week: 9
+  days:
+    - date: 'Mar 17'
+      items:
+        - type: 'Exam'
+          id: '1'
+          name: Midterm Exam
+          href: ''
+    - date: 'Mar 19'
+      items:
+        - type: 'Lecture'
+          id: '16'
+          name: AR Models
+          href: './public/lectures/16_ar_models.md'
+        - type: 'Lecture'
+          id: 'Notes 16'
+          name: Lecture 16 Notes
+          href: './public/lectures/16_ar_models_notes.md'
+        - type: 'Lecture'
+          id: 'Notebook 16'
+          name: Lecture 16 Notebook
+          href: './public/lectures/Lecture16.ipynb'
