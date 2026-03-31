@@ -280,3 +280,21 @@
           id: 'Notebook 16'
           name: Lecture 16 Notebook
           href: './public/lectures/Lecture16.ipynb'
+- week: 10
+  days:
+    - date: 'Mar 31'
+      items:
+        - type: 'Lecture'
+          id: '17'
+          name: MA and ARMA Models
+          href: './public/lectures/17_arma_models.md'
+        # - type: 'Lecture'
+        #   id: 'Notes 17'
+        #   name: Lecture 17 Notes 
+        #   href: ''
+    - date: 'Apr 2'
+      items: 
+        - type: 'Lecture'
+          id: '18'
+          name: ARIMA Models 
+          href: './public/lectures/18_arima_models.md'

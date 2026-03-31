@@ -109,6 +109,11 @@ project:
         - file: public/lectures/16_ar_models.md
         - file: public/lectures/16_ar_models_notes.md
         - file: public/lectures/Lecture16.ipynb
+    - title: Week 10
+      children:
+        - file: public/lectures/17_arma_models.md
+        - file: public/lectures/18_arima_models.md
+        
 
 site:
   template: book-theme
