@@ -288,10 +288,10 @@
           id: '17'
           name: MA and ARMA Models
           href: './public/lectures/17_arma_models.md'
-        # - type: 'Lecture'
-        #   id: 'Notes 17'
-        #   name: Lecture 17 Notes 
-        #   href: ''
+        - type: 'Lecture'
+          id: 'Notes 17'
+          name: Lecture 17 Notes 
+          href: './public/lectures/17_arma_models_notes.md'
     - date: 'Apr 2'
       items: 
         - type: 'Lecture'

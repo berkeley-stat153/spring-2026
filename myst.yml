@@ -112,6 +112,7 @@ project:
     - title: Week 10
       children:
         - file: public/lectures/17_arma_models.md
+        - file: public/lectures/17_arma_models_notes.md
         - file: public/lectures/18_arima_models.md
         
 
