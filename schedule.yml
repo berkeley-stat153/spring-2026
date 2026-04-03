@@ -298,3 +298,17 @@
           id: '18'
           name: ARIMA Models 
           href: './public/lectures/18_arima_models.md'
+        - type: 'Lecture'
+          id: 'Notes 18'
+          name: Lecture 18 Notes
+          href: './public/lectures/18_arima_models_notes.md'
+        - type: 'Lecture'
+          id: 'Notebook 18'
+          name: Lecture 18 Notebook
+          href: './public/lectures/Lecture18.ipynb'
+    - date: 'Apr 3'
+      items:
+        - type: 'Lab'
+          id: '9'
+          name: Lab 9
+          href: 'https://datahub.berkeley.edu/hub/user-redirect/git-pull?repo=https%3A%2F%2Fgithub.com%2Fberkeley-stat153%2Fspring-2026&branch=main&urlpath=lab%2Ftree%2Fspring-2026%2Fpublic%2Flabs%2FLab9.ipynb'
