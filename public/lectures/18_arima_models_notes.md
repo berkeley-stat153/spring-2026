@@ -1,6 +1,6 @@
 ---
 title: "Lecture 18 Notes - ARMA Models"
-description: "Stat153/248 Time Series - Lecture 17 Notes"
+description: "Stat153/248 Time Series - Lecture 18 Notes"
 author:
   - name: "Liberty Hamilton"
 exports:
