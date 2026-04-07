@@ -115,18 +115,18 @@ Topics will be available on the [course website](https://stat153.berkeley.edu/sp
 | Mar. 19  | AR models                                            |                 |
 | Mar. 24  | SPRING BREAK                                         |                 |
 | Mar. 26  | SPRING BREAK                                         |                 |
-| Mar. 31  | ARIMA Models                                         | HW4 available   |
+| Mar. 31  | ARIMA Models                                         |                 |
 | Apr. 2   | ARIMA models (cont'd)                                |                 |
 | Apr. 7   | Time-lagged regression                               |                 |
-| Apr. 9   | Time-lagged regression (cont'd)                      |                 |
+| Apr. 9   | Time-lagged regression (cont'd)                      | HW4 available   |
 | Apr. 14  | State space models                                   |                 |
-| Apr. 16  | State space models (cont'd)                          | HW4 due         |
-| Apr. 21  | Convolutional Neural Networks                        | HW5 available   |
-| Apr. 23  | Convolutional Neural Networks (cont'd)               |                 |
+| Apr. 16  | State space models (cont'd)                          |                 |
+| Apr. 21  | Convolutional Neural Networks                        | HW4 due         |
+| Apr. 23  | Convolutional Neural Networks (cont'd)               | HW 5 available  |
 | Apr. 28  | Recurrent Neural Networks                            |                 |
 | Apr. 30  | Recurrent Neural Networks (cont'd)                   |                 |
 | May 5    | Self-supervised learning                             |                 |
 | May 7    | Self-supervised learning (cont'd), wrap up           | HW5 due         |
-| May 14 7-10pm | FINAL EXAM  (location TBD)                                         |                 |
+| May 14 7-10pm | FINAL EXAM  (location TBD)                      |                 |
 
  
