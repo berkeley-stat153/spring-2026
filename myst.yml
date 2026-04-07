@@ -121,7 +121,9 @@ project:
           open_in_same_tab: false
     - title: Week 11
       children:
-        - file: public/lectures/19_arima_time_lagged_reg.md     
+        - file: public/lectures/19_arima_time_lagged_reg.md  
+        - file: public/lectures/19_arima_time_lagged_reg_notes.md     
+        - file: public/lectures/Lecture19.ipynb     
 
 site:
   template: book-theme

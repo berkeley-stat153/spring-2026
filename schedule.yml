@@ -320,7 +320,11 @@
           id: '19'
           name: ARIMA and Time Lagged Regression
           href: './public/lectures/19_arima_time_lagged_reg.md'
-        # - type: 'Lecture'
-        #   id: 'Notes 19'
-        #   name: Lecture 19 Notes 
-        #   href: './public/lectures/19_arima_time_lagged_reg_notes.md'
+        - type: 'Lecture'
+          id: 'Notes 19'
+          name: Lecture 19 Notes 
+          href: './public/lectures/19_arima_time_lagged_reg_notes.md'
+        - type: 'Lecture'
+          id: 'Notebook 19'
+          name: Lecture 19 Notebook
+          href: './public/lectures/Lecture19.ipynb'
