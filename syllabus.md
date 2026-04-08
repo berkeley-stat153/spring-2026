@@ -118,7 +118,7 @@ Topics will be available on the [course website](https://stat153.berkeley.edu/sp
 | Mar. 31  | ARMA Models                                          |                 |
 | Apr. 2   | ARIMA models                                         |                 |
 | Apr. 7   | ARIMA models (cont'd)                                |                 |
-| Apr. 9   | Time-lagged regression (cont'd)                      | HW4 available   |
+| Apr. 9   | Time-lagged regressions                              | HW4 available   |
 | Apr. 14  | State space models                                   |                 |
 | Apr. 16  | State space models (cont'd)                          |                 |
 | Apr. 21  | Convolutional Neural Networks                        | HW4 due         |
