@@ -115,9 +115,9 @@ Topics will be available on the [course website](https://stat153.berkeley.edu/sp
 | Mar. 19  | AR models                                            |                 |
 | Mar. 24  | SPRING BREAK                                         |                 |
 | Mar. 26  | SPRING BREAK                                         |                 |
-| Mar. 31  | ARIMA Models                                         |                 |
-| Apr. 2   | ARIMA models (cont'd)                                |                 |
-| Apr. 7   | Time-lagged regression                               |                 |
+| Mar. 31  | ARMA Models                                          |                 |
+| Apr. 2   | ARIMA models                                         |                 |
+| Apr. 7   | ARIMA models (cont'd)                                |                 |
 | Apr. 9   | Time-lagged regression (cont'd)                      | HW4 available   |
 | Apr. 14  | State space models                                   |                 |
 | Apr. 16  | State space models (cont'd)                          |                 |
