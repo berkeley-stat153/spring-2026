@@ -328,3 +328,9 @@
           id: 'Notebook 19'
           name: Lecture 19 Notebook
           href: './public/lectures/Lecture19.ipynb'
+    - date: 'Apr 9'
+      items:
+        - type: 'Lecture'
+          id: '20'
+          name: Time Lagged Regression
+          href: './public/lectures/20_time_lagged_reg.md'
