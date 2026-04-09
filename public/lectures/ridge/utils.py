@@ -3,7 +3,6 @@ import numpy as np
 #import scipy.stats
 import random
 import sys
-import tables
 import h5py
 
 
