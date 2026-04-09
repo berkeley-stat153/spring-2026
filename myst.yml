@@ -124,7 +124,9 @@ project:
         - file: public/lectures/19_arima_time_lagged_reg.md  
         - file: public/lectures/19_arima_time_lagged_reg_notes.md     
         - file: public/lectures/Lecture19.ipynb    
-        - file: public/lectures/20_time_lagged_reg.md          
+        - file: public/lectures/20_time_lagged_reg.md
+        - file: public/lectures/20_time_lagged_reg_notes.md          
+        - file: public/lectures/Lecture20.ipynb    
 
 site:
   template: book-theme

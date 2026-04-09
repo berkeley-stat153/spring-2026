@@ -334,3 +334,11 @@
           id: '20'
           name: Time Lagged Regression
           href: './public/lectures/20_time_lagged_reg.md'
+        - type: 'Lecture'
+          id: 'Notes 20'
+          name: Lecture 20 Notes 
+          href: './public/lectures/20_time_lagged_reg_notes.md'
+        - type: 'Lecture'
+          id: 'Notebook 20'
+          name: Lecture 20 Notebook
+          href: './public/lectures/Lecture20.ipynb'
