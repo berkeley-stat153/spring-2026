@@ -342,3 +342,9 @@
           id: 'Notebook 20'
           name: Lecture 20 Notebook
           href: './public/lectures/Lecture20.ipynb'
+    - date: 'Apr 10'
+      items: 
+        - type: 'Lab'
+          id: '10'
+          name: Lab 10
+          href: 'https://datahub.berkeley.edu/hub/user-redirect/git-pull?repo=https%3A%2F%2Fgithub.com%2Fberkeley-stat153%2Fspring-2026&branch=main&urlpath=lab%2Ftree%2Fspring-2026%2Fpublic%2Flabs%2FLab10.ipynb'
