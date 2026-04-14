@@ -312,7 +312,7 @@
           id: '9'
           name: Lab 9
           href: 'https://datahub.berkeley.edu/hub/user-redirect/git-pull?repo=https%3A%2F%2Fgithub.com%2Fberkeley-stat153%2Fspring-2026&branch=main&urlpath=lab%2Ftree%2Fspring-2026%2Fpublic%2Flabs%2FLab9.ipynb'
-- week: 10
+- week: 11
   days:
     - date: 'Apr 7'
       items:
@@ -348,7 +348,7 @@
           id: '10'
           name: Lab 10
           href: 'https://datahub.berkeley.edu/hub/user-redirect/git-pull?repo=https%3A%2F%2Fgithub.com%2Fberkeley-stat153%2Fspring-2026&branch=main&urlpath=lab%2Ftree%2Fspring-2026%2Fpublic%2Flabs%2FLab10.ipynb'
-- week: 11
+- week: 12
   days:
     - date: 'Apr 14'
       items:
