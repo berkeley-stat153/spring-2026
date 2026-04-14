@@ -133,7 +133,7 @@ project:
     - title: Week 12
       children:
         - file: public/lectures/21_state_spaces_models.md
-        
+
 site:
   template: book-theme
   title: 'Stat 153 / 248'
