@@ -132,7 +132,8 @@ project:
           open_in_same_tab: false
     - title: Week 12
       children:
-        - file: public/lectures/21_state_spaces_models.md
+        - file: public/lectures/21_state_space_models.md
+
 
 site:
   template: book-theme
