@@ -133,6 +133,7 @@ project:
     - title: Week 12
       children:
         - file: public/lectures/21_state_space_models.md
+        - file: public/lectures/21_state_space_models_notes.md
 
 
 site:
