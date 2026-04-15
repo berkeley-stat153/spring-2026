@@ -356,3 +356,7 @@
           id: '21'
           name: State Space Models Part 1
           href: './public/lectures/21_state_space_models.md'
+        - type: 'Lecture'
+          id: 'Notes 21'
+          name: Lecture 21 Notes 
+          href: './public/lectures/21_state_space_models_notes.md'
