@@ -360,3 +360,23 @@
           id: 'Notes 21'
           name: Lecture 21 Notes 
           href: './public/lectures/21_state_space_models_notes.md'
+    - date: 'Apr 16'
+      items:
+        - type: 'Lecture'
+          id: '22'
+          name: State Space Models Part 2
+          href: './public/lectures/22_state_space_models_2.md'
+        - type: 'Lecture'
+          id: 'Notes 21'
+          name: Lecture 22 Notes 
+          href: './public/lectures/22_state_space_models_2_notes.md'
+        - type: 'Lecture'
+          id: 'Notebook 22'
+          name: Lecture 22 Notebook 
+          href: './public/lectures/Lecture22.ipynb'
+    - date: 'Apr 17'
+      items:
+        - type: 'Lab'
+          id: 11
+          name: Lab 11
+          href: ''
