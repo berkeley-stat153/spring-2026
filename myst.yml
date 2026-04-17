@@ -139,6 +139,9 @@ project:
           open_in_same_tab: false
         - file: public/lectures/22_state_space_models_2.md
         - file: public/lectures/22_state_space_models_2_notes.md
+        - url: 'https://datahub.berkeley.edu/hub/user-redirect/git-pull?repo=https%3A%2F%2Fgithub.com%2Fberkeley-stat153%2Fspring-2026&branch=main&urlpath=lab%2Ftree%2Fspring-2026%2Fpublic%2Flabs%2FLab11.ipynb'
+          title: 'Lab 11'
+          open_in_same_tab: false
 
 
 site:
