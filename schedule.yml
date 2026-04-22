@@ -380,3 +380,11 @@
           id: 11
           name: Lab 11
           href: 'https://datahub.berkeley.edu/hub/user-redirect/git-pull?repo=https%3A%2F%2Fgithub.com%2Fberkeley-stat153%2Fspring-2026&branch=main&urlpath=lab%2Ftree%2Fspring-2026%2Fpublic%2Flabs%2FLab11.ipynb'
+- week: 13
+  days:
+    - date: 'Apr 21'
+      items:
+        - type: 'Lecture'
+          id: '23'
+          name: Convolutional Neural Networks Part 1
+          href: './public/lectures/23_cnns.html'
