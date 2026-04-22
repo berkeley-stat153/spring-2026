@@ -5,12 +5,5 @@ title: "Lecture 23 - Convolutional Neural Networks - Part 1"
 
 # Convolutional neural networks
 
-<iframe
-  src="public/lectures/23_cnns/index.html"
-  width="100%"
-  height="700"
-  style="border: 1px solid #ddd; border-radius: 4px;"
-  title="Lecture 23 notes">
-</iframe>
-
-[Open in new tab](public/lectures/23_cnns/index.html)
+[PDF of slides](./23_CNNs_Part1.pdf)
+[Convolution animations](https://github.com/vdumoulin/conv_arithmetic)
