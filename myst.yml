@@ -145,7 +145,7 @@ project:
         - file: public/labs/Stat153_248_PracticeQs_Lab11_answers.md
     - title: Week 13
       children:
-        - file: public/lectures/23_cnns.html
+        - file: public/lectures/23_cnns.md
 
 
 site:

@@ -387,4 +387,4 @@
         - type: 'Lecture'
           id: '23'
           name: Convolutional Neural Networks Part 1
-          href: './public/lectures/23_cnns.html'
+          href: './public/lectures/23_cnns.md'
