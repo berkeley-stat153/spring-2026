@@ -388,3 +388,15 @@
           id: '23'
           name: Convolutional Neural Networks Part 1
           href: './public/lectures/23_cnns.md'
+    - date: 'Apr 23'
+      items:
+        - type: 'Lecture'
+          id: '24'
+          name: Convolutional Neural Networks Part 2
+          href: './public/lectures/24_cnns.md'
+    - date: 'Apr 24'
+      items:
+        - type: ' Lab'
+          id: 12
+          name: Lab 12
+          href: 'https://datahub.berkeley.edu/hub/user-redirect/git-pull?repo=https%3A%2F%2Fgithub.com%2Fberkeley-stat153%2Fspring-2026&branch=main&urlpath=lab%2Ftree%2Fspring-2026%2Fpublic%2Flabs%2FLab12.ipynb'

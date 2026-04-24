@@ -146,7 +146,10 @@ project:
     - title: Week 13
       children:
         - file: public/lectures/23_cnns.md
-
+        - file: public/lectures/24_cnns.md
+        - url: 'https://datahub.berkeley.edu/hub/user-redirect/git-pull?repo=https%3A%2F%2Fgithub.com%2Fberkeley-stat153%2Fspring-2026&branch=main&urlpath=lab%2Ftree%2Fspring-2026%2Fpublic%2Flabs%2FLab12.ipynb'
+          title: 'Lab 12'
+          open_in_same_tab: false
 
 site:
   template: book-theme
