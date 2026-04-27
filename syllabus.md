@@ -122,8 +122,8 @@ Topics will be available on the [course website](https://stat153.berkeley.edu/sp
 | Apr. 14  | State space models                                   |                 |
 | Apr. 16  | State space models (cont'd)                          |                 |
 | Apr. 21  | Convolutional Neural Networks                        | HW4 due         |
-| Apr. 23  | Convolutional Neural Networks (cont'd)               | HW 5 available  |
-| Apr. 28  | Recurrent Neural Networks                            |                 |
+| Apr. 23  | Convolutional Neural Networks (cont'd)               |                 |
+| Apr. 28  | Recurrent Neural Networks                            | HW5 available   |
 | Apr. 30  | Recurrent Neural Networks (cont'd)                   |                 |
 | May 5    | Self-supervised learning                             |                 |
 | May 7    | Self-supervised learning (cont'd), wrap up           | HW5 due         |
