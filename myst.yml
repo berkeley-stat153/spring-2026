@@ -153,6 +153,7 @@ project:
     - title: Week 14
       children:
         - file: public/lectures/25_rnns.md
+        - file: public/lectures/26_rnns_2.md
 
 site:
   template: book-theme

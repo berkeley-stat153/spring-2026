@@ -396,13 +396,25 @@
           href: './public/lectures/24_cnns.md'
     - date: 'Apr 24'
       items:
-        - type: ' Lab'
+        - type: 'Lab'
           id: 12
           name: Lab 12
           href: 'https://datahub.berkeley.edu/hub/user-redirect/git-pull?repo=https%3A%2F%2Fgithub.com%2Fberkeley-stat153%2Fspring-2026&branch=main&urlpath=lab%2Ftree%2Fspring-2026%2Fpublic%2Flabs%2FLab12.ipynb'
     - date: 'Apr 28'
       items:
-        - type: ' Lecture'
+        - type: 'Lecture'
           id: 25
           name: Recurrent Neural Networks Part 1
           href: './public/lectures/25_rnns.md'
+    - date: 'Apr 30'
+      items:
+        - type: 'Lecture'
+          id: 26
+          name: Recurrent Neural Networks Part 2
+          href: './public/lectures/26_rnns_2.md'
+    - date: 'May 1'
+      items:
+        - type: 'Lab'
+          id: 13
+          name: Final review
+          href: ''
