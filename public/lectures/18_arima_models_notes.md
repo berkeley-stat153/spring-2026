@@ -24,7 +24,7 @@ where $w_t$ is a white noise sequence. The coefficients $\phi_1, \dots, \phi_j, 
 We talked last time about:
 
 * Causality: a causal AR(p) process can be written as an MA($\infty$) process: $x_t=\sum_{j=0}^\infty \psi_j w_{t-j}$ where $\sum_{j=0}^\infty |\psi_j| < \infty$
-* Invertibility: An invertible MA(q) process can be written as an AR($\infty$) process: $x_t = -\sum{j=1}^{\infty} \phi_j x_{t-j} + w_t$
+* Invertibility: An invertible MA(q) process can be written as an AR($\infty$) process: $x_t = -\sum_{j=1}^{\infty} \phi_j x_{t-j} + w_t$
 * (Refer to Appendix B2 of SS for proofs, also see Ch3)
 
 Because causality implies stationarity, this renders the ARMA(p,q) process stationary, as long as the roots of $\phi$ and $\theta$ lie outside the unit circle.
@@ -56,7 +56,7 @@ The following table shows how this information can be used in practice when dete
 Function |  AR(p)    | MA(q)                | ARMA(p,q)
 ---------|-----------|----------------------|----------
 ACF      | tails off | cuts off after lag q | tails off
-PACF     | cuts off after lag q | tails off | tails off
+PACF     | cuts off after lag p | tails off | tails off
 
 # Examples on real data
 
